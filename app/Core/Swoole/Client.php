@@ -74,7 +74,7 @@ abstract class Client
                 return $result['data'];
             }
 
-            throw new Exception($result['errorMessage'], $result['errorCode']);
+            throw new Exception($result['message'], $result['errorCode']);
         }
 
         throw new Exception('未知错误');
@@ -104,5 +104,10 @@ abstract class Client
             'method' => $name,
             'arguments' => $arguments,
         ];
+    }
+
+    public function flush()
+    {
+        unset(static::$_instances[$this->service]);
     }
 }

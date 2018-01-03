@@ -12,6 +12,8 @@ class SwooleClient implements SwooleClientInterface
 
     protected static $_instances = [];
 
+    protected $service;
+
     /**
      * SwooleClient constructor.
      * @param $host
@@ -21,7 +23,7 @@ class SwooleClient implements SwooleClientInterface
      */
     public function __construct($host, $port, $options = [])
     {
-        $client = new swoole_client(SWOOLE_SOCK_TCP);
+        $client = new swoole_client(SWOOLE_TCP | SWOOLE_KEEP);
 
         if (isset($options['timeout']) && is_numeric($options['timeout'])) {
             $this->timeout = $options['timeout'];
@@ -46,7 +48,10 @@ class SwooleClient implements SwooleClientInterface
             return static::$_instances[$service];
         }
 
-        return static::$_instances[$service] = new static($host, $port, $options);
+        $client = new static($host, $port, $options);
+        static::$_instances[$service] = $client;
+        $client->service = $service;
+        return $client;
     }
 
     /**
@@ -55,7 +60,17 @@ class SwooleClient implements SwooleClientInterface
      */
     public function handle($data)
     {
-        $this->client->send(json_encode($data));
-        return $this->client->recv();
+        $client = $this->client;
+        if (!$client->isConnected()) {
+            throw new Exception("connect failed. Error: {$client->errCode}");
+        }
+        $client->send(json_encode($data));
+        return $client->recv();
+    }
+
+    public function flush()
+    {
+        // $this->client->close();
+        unset(static::$_instances[$this->service]);
     }
 }

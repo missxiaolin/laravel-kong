@@ -31,4 +31,13 @@ class IndexController extends Controller
 
         return api_response($result);
     }
+
+    public function testException()
+    {
+        try {
+            $result = TestClient::getInstance()->exception();
+        } catch (\Exception $ex) {
+            dd($ex->getMessage());
+        }
+    }
 }

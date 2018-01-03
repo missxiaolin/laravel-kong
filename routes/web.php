@@ -18,3 +18,4 @@ Route::get('/', function () {
 // swoole rpc 测试
 Route::any('/index/index', 'IndexController@index')->name('index.index');
 Route::any('/index/timeout', 'IndexController@timeout')->name('index.timeout');
+Route::any('/index/test/exception', 'IndexController@testException')->name('index.test.exception');
