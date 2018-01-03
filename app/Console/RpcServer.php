@@ -85,6 +85,34 @@ abstract class RpcServer extends Command
     }
 
     /**
+     * 成功返回
+     * @param $result
+     * @return string
+     */
+    public function success($result)
+    {
+        return json_encode([
+            'success' => true,
+            'data' => $result,
+        ]);
+    }
+
+    /**
+     * 错误返回
+     * @param $code
+     * @param $message
+     * @return string
+     */
+    public function fail($code, $message)
+    {
+        return json_encode([
+            'success' => false,
+            'errorCode' => $code,
+            'message' => $message,
+        ]);
+    }
+
+    /**
      * @param swoole_server $server
      * @param $workerId
      * @return mixed

@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Console\RpcServer;
-use Illuminate\Console\Command;
 use swoole_server;
+use Exception;
 
 class Server extends RpcServer
 {
@@ -73,5 +73,20 @@ class Server extends RpcServer
     public function receive(swoole_server $server, $fd, $reactor_id, $data)
     {
         // TODO: Implement receive() method.
+        try {
+            $data = json_decode($data, true);
+            $service = $data['service'];
+            $method = $data['method'];
+            $arguments = $data['arguments'];
+
+            if (!isset($this->services[$service])) {
+                throw new Exception("The service handler is not exist!");
+            }
+
+            $result = $this->services[$service]->$method(...$arguments);
+            $server->send($fd, $this->success($result));
+        } catch (\Exception $ex) {
+            $server->send($fd, $this->fail($ex->getCode(), $ex->getMessage()));
+        }
     }
 }
