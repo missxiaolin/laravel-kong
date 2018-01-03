@@ -12,7 +12,7 @@ class SendTest extends Command
      *
      * @var string
      */
-    protected $signature = 'swoole:send@test';
+    protected $signature = 'swoole:send@test {num}';
 
     /**
      * The console command description.
@@ -38,9 +38,14 @@ class SendTest extends Command
      */
     public function handle()
     {
+        $num = $this->argument('num');
         try {
-            $result = TestClient::getInstance()->returnString();
-            dd($result);
+            $begin_time = microtime(true);
+            for ($i = 0; $i < $num; $i++) {
+                $result = TestClient::getInstance()->returnString();
+            }
+            $end_time = microtime(true);
+            dd('swoole 处理时间为:' . ($end_time - $begin_time));
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
