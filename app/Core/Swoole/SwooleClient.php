@@ -28,7 +28,7 @@ class SwooleClient implements SwooleClientInterface
         }
 
         if (!$client->connect($host, $port, $this->connectTimeout)) {
-            throw new RpcException("connect failed. Error: {$client->errCode}");
+            throw new Exception("connect failed. Error: {$client->errCode}");
         }
         $this->client = $client;
     }
