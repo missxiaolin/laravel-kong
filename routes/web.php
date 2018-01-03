@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::any('/index/index', 'IndexController@index')->name('index.index');
