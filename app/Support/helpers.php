@@ -28,3 +28,14 @@ if (!function_exists('api_response')) {
             ->header('Access-Control-Allow-Headers', $headers);
     }
 }
+
+if (!function_exists('api_error')) {
+
+    function api_error($code = 0, $message = null, Throwable $previous = null)
+    {
+        if ($message === null) {
+            $message = \App\Core\Enums\ErrorCode::getMessage($code);
+            return api_response([], $code, $message);
+        }
+    }
+}

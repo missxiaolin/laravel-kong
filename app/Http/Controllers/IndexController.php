@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\Enums\ErrorCode;
 use App\Core\Swoole\Test\TestClient;
+use Exception;
 
 class IndexController extends Controller
 {
@@ -12,7 +14,7 @@ class IndexController extends Controller
         try {
             $result = TestClient::getInstance()->returnString();
         } catch (\Exception $e) {
-            return api_response([], 1000, '接口超时');
+            return api_error(ErrorCode::$ENUM_SYSTEM_TIMEOUT);
         }
 
         return api_response($result);
@@ -24,7 +26,7 @@ class IndexController extends Controller
         try {
             $result = TestClient::getInstance()->recvTimeout();
         } catch (\Exception $e) {
-            return api_response([], 1000, '接口超时');
+            return api_error(ErrorCode::$ENUM_SYSTEM_TIMEOUT);
         }
 
         return api_response($result);

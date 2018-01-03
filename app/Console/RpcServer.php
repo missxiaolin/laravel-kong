@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Core\Swoole\Handler\HanderInterface;
 use Illuminate\Console\Command;
 use swoole_server;
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5eba86da256ddeb8084c32d3d10e18d3",
+    "content-hash": "95bde2bedcd1a415a9728d7d8830bf1a",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2223,6 +2223,49 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "xiaolin/enum",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/missxiaolin/enum.git",
+                "reference": "9a6ed1269c5dc96e59f2f4f349c445a688596fdf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/missxiaolin/enum/9a6ed1269c5dc96e59f2f4f349c445a688596fdf.zip",
+                "reference": "9a6ed1269c5dc96e59f2f4f349c445a688596fdf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": "^3.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xiaolin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "小林",
+                    "email": "462441355@qq.com"
+                }
+            ],
+            "description": "enum",
+            "keywords": [
+                "xiaolin"
+            ],
+            "time": "2017-11-24T01:51:24+00:00"
         }
     ],
     "packages-dev": [
@@ -2438,6 +2481,52 @@
                 "test"
             ],
             "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "limingxinleo/x-phalcon-enum",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/limingxinleo/x-phalcon-enum.git",
+                "reference": "f5a175966f687d9ee61a494d4feb3e3cbd9a3921"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/limingxinleo/x-phalcon-enum/f5a175966f687d9ee61a494d4feb3e3cbd9a3921.zip",
+                "reference": "f5a175966f687d9ee61a494d4feb3e3cbd9a3921",
+                "shasum": ""
+            },
+            "require": {
+                "ext-phalcon": "^3.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phalcon/dd": "^1.1",
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Xin\\Phalcon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "李铭昕",
+                    "email": "715557344@qq.com"
+                }
+            ],
+            "description": "a phalcon enum component",
+            "keywords": [
+                "phalcon",
+                "phalcon-component",
+                "phalcon-enum"
+            ],
+            "time": "2017-11-20T10:12:35+00:00"
         },
         {
             "name": "mockery/mockery",
