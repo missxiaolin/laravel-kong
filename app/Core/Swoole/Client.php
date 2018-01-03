@@ -16,7 +16,7 @@ abstract class Client
     /** @var SwooleClient */
     protected $client;
 
-    const CONNECT_TIMEOUT = 0.1;
+    const TIMEOUT = 0.1;
 
     public function __construct()
     {
@@ -86,7 +86,7 @@ abstract class Client
     public function getSwooleClient()
     {
         $options = [
-            'connect_timeout' => static::CONNECT_TIMEOUT,
+            'timeout' => static::TIMEOUT,
         ];
 
         return SwooleClient::getInstance($this->service, $this->host, $this->port, $options);
