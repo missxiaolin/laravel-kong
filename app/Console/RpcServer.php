@@ -1,48 +1,70 @@
 <?php
+
 namespace App\Console;
 
+use Illuminate\Console\Command;
 use swoole_server;
 
-class Server
+abstract class RpcServer extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'swoole:server';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'swoole server';
+
     /**
      * host
      * @var string
      */
-    public $host;
+    protected $host;
 
     /**
      * 端口号
      * @var int
      */
-    public $port;
+    protected $port;
 
     /**
      * 配置项
      * @var array
      */
-    public $config;
+    protected $config;
 
     /**
-     * @param $host
-     * @param $port
-     * @param array $config
+     * Create a new command instance.
+     *
+     * @return void
      */
-    public function serve($host, $port, $config = [])
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
     {
         if (!extension_loaded('swoole')) {
             dump('The swoole extension is not installed');
             return;
         }
 
-        $this->host = $host;
-        $this->port = $port;
-        $this->config = $config;
-
         set_time_limit(0);
-        $server = new swoole_server($host, $port);
+        $server = new swoole_server($this->host, $this->port);
 
-        $server->set($config);
+        $server->set($this->config);
 
         $server->on('receive', [$this, 'receive']);
         $server->on('workerStart', [$this, 'workerStart']);
@@ -52,6 +74,9 @@ class Server
         $server->start();
     }
 
+    /**
+     * @param swoole_server $server
+     */
     public function beforeServerStart(swoole_server $server)
     {
         echo "-------------------------------------------" . PHP_EOL;
@@ -62,19 +87,16 @@ class Server
     /**
      * @param swoole_server $server
      * @param $workerId
+     * @return mixed
      */
-    public function workerStart(swoole_server $server, $workerId)
-    {
-    }
+    abstract public function workerStart(swoole_server $server, $workerId);
 
     /**
      * @param swoole_server $server
      * @param $fd
      * @param $reactor_id
      * @param $data
+     * @return mixed
      */
-    public function receive(swoole_server $server, $fd, $reactor_id, $data)
-    {
-
-    }
+    abstract public function receive(swoole_server $server, $fd, $reactor_id, $data);
 }
