@@ -24,7 +24,7 @@ class SwooleClient implements SwooleClientInterface
         $client = new swoole_client(SWOOLE_SOCK_TCP);
 
         if (isset($options['timeout']) && is_numeric($options['timeout'])) {
-            $this->connectTimeout = $options['connect_timeout'];
+            $this->timeout = $options['timeout'];
         }
 
         if (!$client->connect($host, $port, $this->timeout)) {
