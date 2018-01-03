@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// swoole rpc 测试
 Route::any('/index/index', 'IndexController@index')->name('index.index');
+Route::any('/index/timeout', 'IndexController@timeout')->name('index.timeout');
