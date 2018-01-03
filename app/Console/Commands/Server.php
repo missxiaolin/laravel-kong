@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Console\RpcServer;
+use App\Core\Swoole\Handler\HanderInterface;
+use App\Core\Swoole\Handler\TestHandler;
 use swoole_server;
 use Exception;
 
@@ -46,13 +48,30 @@ class Server extends RpcServer
     ];
 
     /**
+     * @var array
+     */
+    public $services = [];
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
     public function __construct()
     {
+        $this->setHandler('test',TestHandler::getInstance());
         parent::__construct();
+    }
+
+    /**
+     * @param $service
+     * @param HanderInterface $hander
+     * @return $this
+     */
+    public function setHandler($service, HanderInterface $hander)
+    {
+        $this->services[$service] = $hander;
+        return $this;
     }
 
     /**

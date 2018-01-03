@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Core\Swoole\Handler\HanderInterface;
 use Illuminate\Console\Command;
 use swoole_server;
 
@@ -117,7 +118,7 @@ abstract class RpcServer extends Command
      * @param $workerId
      * @return mixed
      */
-    abstract public function workerStart(swoole_server $server, $workerId);
+    abstract protected function workerStart(swoole_server $server, $workerId);
 
     /**
      * @param swoole_server $server
@@ -126,5 +127,6 @@ abstract class RpcServer extends Command
      * @param $data
      * @return mixed
      */
-    abstract public function receive(swoole_server $server, $fd, $reactor_id, $data);
+    abstract protected function receive(swoole_server $server, $fd, $reactor_id, $data);
+
 }
