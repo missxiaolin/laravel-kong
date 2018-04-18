@@ -43,6 +43,7 @@ class SendTest extends Command
             $begin_time = microtime(true);
             for ($i = 0; $i < $num; $i++) {
                 $result = TestClient::getInstance()->returnString();
+                dump($result);
             }
             $end_time = microtime(true);
             dd('swoole 处理时间为:' . ($end_time - $begin_time));
