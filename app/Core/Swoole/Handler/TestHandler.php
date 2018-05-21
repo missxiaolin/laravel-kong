@@ -3,7 +3,7 @@ namespace App\Core\Swoole\Handler;
 
 use App\Core\InstanceTrait;
 
-class TestHandler implements HanderInterface
+class TestHandler extends Handler
 {
     use InstanceTrait;
 

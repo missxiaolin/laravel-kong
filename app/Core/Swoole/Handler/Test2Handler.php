@@ -4,7 +4,7 @@ namespace App\Core\Swoole\Handler;
 use App\Core\InstanceTrait;
 use App\Core\Swoole\Test\TestClient;
 
-class Test2Handler implements HanderInterface
+class Test2Handler extends Handler
 {
     use InstanceTrait;
 
