@@ -1,7 +1,9 @@
 <?php
 namespace App\Core\Swoole\Handler;
 
-class TestHandler extends Handler
+use App\Core\Swoole\Test\TestClient;
+
+class Test2Handler extends Handler
 {
 
     /**
@@ -56,11 +58,12 @@ class TestHandler extends Handler
         throw new \Exception('测试异常', 400);
     }
 
-    /**
-     * @return int
-     */
-    public function getSwooleFd()
+    public function getTest2Handler100Times()
     {
-        return $this->fd;
+        $str = '';
+        for ($i = 0; $i < 100; $i++) {
+            $str .= TestClient::getInstance()->returnString();;
+        }
+        return $str;
     }
 }
