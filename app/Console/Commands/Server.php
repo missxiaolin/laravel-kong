@@ -103,9 +103,6 @@ class Server extends RpcServer
                 throw new Exception("The service handler is not exist!");
             }
 
-//            $handler = $this->services[$service];
-//            $handler = new $handler($server, $fd, $reactor_id);
-//            $result = $handler->$method(...$arguments);
             $ref = new ReflectionClass($this->services[$service]);
             $handler = $ref->newInstance($server, $fd, $reactor_id);
             $result = $handler->$method(...$arguments);
