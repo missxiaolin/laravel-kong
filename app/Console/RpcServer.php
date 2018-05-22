@@ -40,6 +40,12 @@ abstract class RpcServer extends Command
     protected $config;
 
     /**
+     * 是否开始debug
+     * @var bool
+     */
+    protected $debug = false;
+
+    /**
      * Create a new command instance.
      *
      * @return void

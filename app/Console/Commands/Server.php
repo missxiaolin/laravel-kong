@@ -89,6 +89,9 @@ class Server extends RpcServer
     public function receive(swoole_server $server, $fd, $reactor_id, $data)
     {
         $data = trim($data);
+        if ($this->debug) {
+            echo "fd:{$fd} data:{$data}" . PHP_EOL;
+        }
         // TODO: Implement receive() method.
         try {
             $data = json_decode($data, true);
