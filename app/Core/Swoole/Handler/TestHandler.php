@@ -55,4 +55,12 @@ class TestHandler extends Handler
     {
         throw new \Exception('测试异常', 400);
     }
+
+    /**
+     * @return int
+     */
+    public function getSwooleFd()
+    {
+        return $this->fd;
+    }
 }

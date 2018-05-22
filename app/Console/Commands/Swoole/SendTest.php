@@ -38,6 +38,8 @@ class SendTest extends Command
      */
     public function handle()
     {
+//        $result = TestClient::getInstance()->getSwooleFd();
+//        dd($result);
         $num = $this->argument('num');
         try {
             $begin_time = microtime(true);

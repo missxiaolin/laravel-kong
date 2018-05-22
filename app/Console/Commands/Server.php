@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Console\RpcServer;
-use App\Core\Swoole\Handler\HanderInterface;
 use App\Core\Swoole\Handler\TestHandler;
+use ReflectionClass;
 use swoole_server;
 use Exception;
 
@@ -103,8 +103,11 @@ class Server extends RpcServer
                 throw new Exception("The service handler is not exist!");
             }
 
-            $handler = $this->services[$service];
-            $handler = new $handler($server, $fd, $reactor_id);
+//            $handler = $this->services[$service];
+//            $handler = new $handler($server, $fd, $reactor_id);
+//            $result = $handler->$method(...$arguments);
+            $ref = new ReflectionClass($this->services[$service]);
+            $handler = $ref->newInstance($server, $fd, $reactor_id);
             $result = $handler->$method(...$arguments);
 
             $server->send($fd, $this->success($result));
