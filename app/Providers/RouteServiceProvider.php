@@ -16,6 +16,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    protected $kongNamespace = 'App\Http\Controllers\Kong';
+
     /**
      * Define your route model bindings, pattern filters, etc.
      *
@@ -38,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        $this->mapKongRoutes();
 
         //
     }
@@ -69,5 +73,14 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapKongRoutes()
+    {
+        Route::middleware('kong')
+            ->namespace($this->kongNamespace)
+            ->domain(config('domain.kong'))
+            ->prefix('kong')
+            ->group(base_path('routes/kong.php'));
     }
 }

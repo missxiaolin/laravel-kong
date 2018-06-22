@@ -6,4 +6,5 @@ return [
             'TOKEN',
         ],
     ],
+    'kong' => env('DOMAIN_KONG', 'www.laravel-kong.com'),
 ];
