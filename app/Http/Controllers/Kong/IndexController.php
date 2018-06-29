@@ -13,6 +13,6 @@ class IndexController
 {
     public function kong()
     {
-        dd(1);
+        dd(config('kong')['host']);
     }
 }
