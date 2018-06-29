@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands\Kong;
 
-use App\Support\Clients\KongHandler;
+use App\Support\Clients\KongClient;
 use Illuminate\Console\Command;
 
-class Services extends Command
+class Add extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'kong:service';
+    protected $signature = 'kong:add {name} {url}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '查看Kong服务列表';
+    protected $description = '添加Kong服务';
 
     /**
      * Create a new command instance.
@@ -32,18 +32,19 @@ class Services extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return mixed
+     * @throws \App\Core\Http\Exception\InitException
      */
     public function handle()
     {
+
+        $name = $this->argument('name');
+        $url = $this->argument('url');
         try {
-            $client = KongHandler::getInstance();
-            $res = $client->services();
-            dd($res);
+            $res = KongClient::getInstance()->add($name, $url);
+            dump($res);
         } catch (\Exception $ex) {
             dump($ex->getMessage());
         }
+
     }
 }

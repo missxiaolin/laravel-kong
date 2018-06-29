@@ -29,4 +29,9 @@ class ErrorCode extends Enum
      * @Message('访问接口超时')
      */
     public static $ENUM_SYSTEM_TIMEOUT = 1000;
+
+    /**
+     * @Message('kong接口错误')
+     */
+    public static $ENUM_KONG_API_FAIL = 1001;
 }
