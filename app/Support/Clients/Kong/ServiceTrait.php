@@ -37,4 +37,19 @@ trait ServiceTrait
             'form_params' => $params,
         ]);
     }
+
+    /**
+     * @desc   更新服务
+     * @author xl
+     * @param $idOrName The service id or name
+     * @param $params
+     * @return mixed
+     */
+    public function updateService($idOrName, $params)
+    {
+        unset($params['id']);
+        return $this->patch("/services/{$idOrName}", [
+            'form_params' => $params,
+        ]);
+    }
 }
