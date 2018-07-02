@@ -3,7 +3,7 @@
 namespace App\Console\Commands\Kong;
 
 use App\Console\Kong;
-use App\Support\Clients\KongHandler;
+use App\Support\Clients\KongClient;
 
 class Lists extends Kong
 {
@@ -31,7 +31,7 @@ class Lists extends Kong
 
     public function init($params = [])
     {
-        $client = KongHandler::getInstance();
+        $client = KongClient::getInstance();
         $res = $client->services($params);
 
         $next = $res['next'];
