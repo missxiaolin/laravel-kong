@@ -17,7 +17,7 @@ use Illuminate\Support\Arr;
 /**
  * Class KongClient
  * @package App\Common\Clients
- * @method addService($name, $url)
+ * @method addService($params = [])
  * @method services($params = [])
  */
 class KongClient
