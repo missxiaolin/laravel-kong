@@ -52,4 +52,15 @@ trait ServiceTrait
             'form_params' => $params,
         ]);
     }
+
+    /**
+     * @desc   获取服务详情
+     * @author xl
+     * @param $idOrName
+     * @return mixed
+     */
+    public function getService($idOrName)
+    {
+        return $this->get("/services/{$idOrName}");
+    }
 }
