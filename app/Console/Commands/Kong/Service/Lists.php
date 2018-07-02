@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Kong;
+namespace App\Console\Commands\Kong\Service;
 
 use App\Console\Kong;
 use App\Support\Clients\KongClient;

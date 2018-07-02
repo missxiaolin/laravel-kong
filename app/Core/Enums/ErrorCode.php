@@ -34,4 +34,9 @@ class ErrorCode extends Enum
      * @Message('kong接口错误')
      */
     public static $ENUM_KONG_API_FAIL = 1001;
+
+    /**
+     * @Message('Kong节点不存在，请先配置节点信息')
+     */
+    public static $ENUM_KONG_NODES_NOT_EXIST = 1002;
 }

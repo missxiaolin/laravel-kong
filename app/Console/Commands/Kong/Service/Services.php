@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Kong;
+namespace App\Console\Commands\Kong\Service;
 
 use App\Support\Clients\KongHandler;
 use Illuminate\Console\Command;

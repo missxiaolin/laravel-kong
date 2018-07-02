@@ -10,6 +10,7 @@ namespace App\Support\Clients;
 
 use App\Core\Http\Client;
 use App\Core\InstanceTrait;
+use App\Src\Models\Node;
 use App\Support\Clients\Kong\ServiceTrait;
 
 class KongHandler extends Client
@@ -18,15 +19,17 @@ class KongHandler extends Client
 
     use ServiceTrait;
 
-    protected $baseUri = 'http://kong.missxiaolin.com';
-
     /**
      * KongHandler constructor.
+     * @throws \Exception
      */
     public function __construct()
     {
-        $config = config('kong');
-        $this->baseUri = $config['host'];
+        $model = Node::first();
+        if (!$model) {
+            throw new \Exception('Kong节点不存在，请先配置节点信息');
+        }
+        $this->baseUri = $model->url;
     }
 
 }

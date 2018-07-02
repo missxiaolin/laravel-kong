@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Kong;
+namespace App\Console\Commands\Kong\Service;
 
 use App\Support\Clients\KongClient;
 use Illuminate\Console\Command;
@@ -42,6 +42,7 @@ class Add extends Command
         try {
             $res = KongClient::getInstance()->add($name, $url);
             dump($res);
+            dump('节点添加成功！');
         } catch (\Exception $ex) {
             dump($ex->getMessage());
         }
