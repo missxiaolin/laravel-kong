@@ -29,10 +29,13 @@ class Lists extends Kong
         'size' => 'A limit on the number of objects to be returned per page.',
     ];
 
-    public function init($params = [])
+    /**
+     * @return mixed|void
+     */
+    public function init()
     {
         $client = KongClient::getInstance();
-        $res = $client->services($params);
+        $res = $client->services([]);
 
         $next = $res['next'];
         $data = $res['data'];

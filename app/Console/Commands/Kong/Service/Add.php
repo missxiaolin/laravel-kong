@@ -45,15 +45,19 @@ class Add extends Kong
     }
 
     /**
-     * @param array $params
      * @return mixed|void
      */
-    public function init($params = [])
+    public function init()
     {
         $name = $this->argument('name');
         $url = $this->argument('url');
+
+        $param = [
+            'name' => $name,
+            'url' => $url,
+        ];
         try {
-            $res = KongClient::getInstance()->add($name, $url);
+            $res = KongClient::getInstance()->add($param);
             dump($res);
             dump('节点添加成功！');
         } catch (\Exception $ex) {

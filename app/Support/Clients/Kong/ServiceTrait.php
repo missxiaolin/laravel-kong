@@ -12,17 +12,12 @@ namespace App\Support\Clients\Kong;
 trait ServiceTrait
 {
     /**
-     * @param $name
-     * @param $url
+     * @param $params array
      * @return mixed
      * @author xl
      */
-    public function addService($name, $url)
+    public function addService($params)
     {
-        $params = [
-            'name' => $name,
-            'url' => $url,
-        ];
         return $this->post('/services/', [
             'form_params' => $params,
         ]);

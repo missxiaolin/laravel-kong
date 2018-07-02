@@ -48,12 +48,11 @@ abstract class Kong extends Command
      */
     public function handle()
     {
-        $this->init([]);
+        $this->init();
     }
 
     /**
-     * @param array $params
      * @return mixed
      */
-    abstract function init($params = []);
+    abstract function init();
 }
