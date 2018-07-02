@@ -8,10 +8,10 @@
 
 namespace App\Support\Clients;
 
-use App\Common\Clients\Kong\RouteTrait;
 use App\Core\Http\Client;
 use App\Core\InstanceTrait;
 use App\Src\Models\Node;
+use App\Support\Clients\Kong\RouteTrait;
 use App\Support\Clients\Kong\ServiceTrait;
 
 class KongHandler extends Client
