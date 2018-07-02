@@ -15,8 +15,9 @@ trait ServiceTrait
      * @param $name
      * @param $url
      * @return mixed
+     * @author xl
      */
-    public function add($name, $url)
+    public function addService($name, $url)
     {
         $params = [
             'name' => $name,
@@ -28,10 +29,17 @@ trait ServiceTrait
     }
 
     /**
+     * @param $params array
+     * @desc   服务列表
+     * @author xl
+     * @params offset
+     * @params size
      * @return mixed
      */
-    public function services()
+    public function services($params = [])
     {
-        return $this->get('/services/');
+        return $this->get('/services/', [
+            'form_params' => $params,
+        ]);
     }
 }

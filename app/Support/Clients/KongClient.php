@@ -14,6 +14,12 @@ use App\Core\InstanceTrait;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Arr;
 
+/**
+ * Class KongClient
+ * @package App\Common\Clients
+ * @method addService($name, $url)
+ * @method services()
+ */
 class KongClient
 {
     use InstanceTrait;
