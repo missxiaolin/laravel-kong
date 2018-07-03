@@ -1,25 +1,30 @@
 <?php
 
-namespace App\Console\Commands\Kong\Routes;
+namespace App\Console\Commands\Kong\Api;
 
 use App\Support\Clients\KongClient;
 use Illuminate\Console\Command;
 
-class ServicesLists extends Command
+class Delete extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'kong:routes:services:lists';
+    protected $signature = 'kong:api:delete';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'kong路由servicesLists';
+    protected $description = 'kong api删除';
+
+    public $params = [
+        'id' => 'The Service id.',
+        'name' => 'The Service name.',
+    ];
 
     /**
      * Create a new command instance.
@@ -38,8 +43,10 @@ class ServicesLists extends Command
      */
     public function handle()
     {
+        $id = '579d6bbe-0bc5-499a-a99a-2ef3b0c686c1';
+
         $client = KongClient::getInstance();
-        $res = $client->getRouteService('2bda353e-cd8a-4815-ba24-5effe317e9c5');
+        $res = $client->deleteApi($id);
         dump($res);
     }
 }

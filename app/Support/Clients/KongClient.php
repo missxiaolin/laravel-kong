@@ -10,7 +10,6 @@ namespace App\Support\Clients;
 
 use App\Core\Enums\ErrorCode;
 use App\Core\Http\Exception\InitException;
-use Exception;
 use App\Core\InstanceTrait;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Support\Arr;
@@ -29,6 +28,12 @@ use Illuminate\Support\Arr;
  * @method getRoute($id)
  * @method updateRoute($id, $params)
  * @method deleteRoute($id)
+ *
+ * @method addApi($params)
+ * @method getApi($idOrName)
+ * @method deleteApi($idOrName)
+ * @method apis($params = [])
+ * @method updateApi($idOrName, $params)
  *
  */
 class KongClient

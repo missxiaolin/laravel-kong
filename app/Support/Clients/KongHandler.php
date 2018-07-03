@@ -11,6 +11,7 @@ namespace App\Support\Clients;
 use App\Core\Http\Client;
 use App\Core\InstanceTrait;
 use App\Src\Models\Node;
+use App\Support\Clients\Kong\ApiTrait;
 use App\Support\Clients\Kong\RouteTrait;
 use App\Support\Clients\Kong\ServiceTrait;
 
@@ -18,7 +19,7 @@ class KongHandler extends Client
 {
     use InstanceTrait;
 
-    use ServiceTrait, RouteTrait;
+    use ServiceTrait, RouteTrait, ApiTrait;
 
     /**
      * KongHandler constructor.
