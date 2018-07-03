@@ -9,6 +9,7 @@
 namespace App\Support\Clients;
 
 use App\Core\Enums\ErrorCode;
+use App\Core\Http\Exception\InitException;
 use Exception;
 use App\Core\InstanceTrait;
 use GuzzleHttp\Exception\ClientException;
@@ -25,6 +26,7 @@ use Illuminate\Support\Arr;
  * @method addRoute($params)
  * @method routes($params = [])
  * @method getRoute($id)
+ * @method updateRoute($id, $params)
  */
 class KongClient
 {
@@ -46,7 +48,7 @@ class KongClient
         } catch (ClientException $ex) {
             $json = json_decode($ex->getResponse()->getBody()->getContents(), true);
             $message = Arr::get($json, 'message');
-            throw new Exception($message, ErrorCode::$ENUM_KONG_API_FAIL);
+            throw new InitException($message, ErrorCode::$ENUM_KONG_API_FAIL);
         }
     }
 }

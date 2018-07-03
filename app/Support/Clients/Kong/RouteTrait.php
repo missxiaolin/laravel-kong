@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Support\Clients\Kong;
 
 trait RouteTrait
@@ -31,7 +32,7 @@ trait RouteTrait
         }
 
         return $this->post("/routes/", [
-            'json' => $params
+            'json' => $params,
         ]);
     }
 
@@ -45,7 +46,7 @@ trait RouteTrait
     public function routes($params = [])
     {
         return $this->get('/routes/', [
-            'json' => $params
+            'json' => $params,
         ]);
     }
 
@@ -58,5 +59,26 @@ trait RouteTrait
     public function getRoute($id)
     {
         return $this->get("/routes/{$id}");
+    }
+
+    /**
+     * @desc   更新路由
+     * @author xl
+     * @param $id
+     * @return mixed
+     */
+    public function updateRoute($id, $params)
+    {
+        if (isset($params['methods']) && !is_array($params['methods'])) {
+            $params['methods'] = [$params['methods']];
+        }
+
+        if (isset($params['paths']) && !is_array($params['paths'])) {
+            $params['paths'] = [$params['paths']];
+        }
+
+        return $this->patch("/routes/{$id}", [
+            'json' => $params,
+        ]);
     }
 }
