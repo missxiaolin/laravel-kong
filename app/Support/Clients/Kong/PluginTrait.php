@@ -72,4 +72,14 @@ trait PluginTrait
     {
         return $this->delete("/plugins/{$idOrName}");
     }
+
+    /**
+     * @desc   启动插件
+     * @author xl
+     * @return mixed
+     */
+    public function pluginsEnabled()
+    {
+        return $this->get('/plugins/enabled');
+    }
 }

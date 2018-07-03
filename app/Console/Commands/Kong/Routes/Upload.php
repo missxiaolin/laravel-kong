@@ -52,9 +52,11 @@ class Upload extends Command
         $id = 'd14e60ab-3f88-4c9e-82f6-1a0ce150c345';
         $params = [
             "protocols" => ["http", "https"],
-            "methods" => null,
+            "methods" => ['GET','POST'],
             "hosts" => ["kong.missxiaolin.com"],
-            "paths" => null,
+            "paths" => [
+                '/kong/index/kong'
+            ],
             "regex_priority" => 0,
             "strip_path" => true,
             "preserve_host" => false,

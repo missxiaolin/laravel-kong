@@ -47,6 +47,7 @@ use Illuminate\Support\Arr;
  * @method plugins($params = [])
  * @method updatePlugins($id, $params)
  * @method deletePlugins($idOrName)
+ * @method pluginsEnabled()
  */
 class KongClient
 {
