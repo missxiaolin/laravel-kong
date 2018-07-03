@@ -20,8 +20,18 @@ trait PluginTrait
     public function addPlugin($params)
     {
         return $this->post("/plugins/", [
-            'json' => $params
+            'json' => $params,
         ]);
+    }
+
+    /**
+     * 获取插件详情
+     * @param $id
+     * @return mixed
+     */
+    public function getPlugin($id)
+    {
+        return $this->get("/plugins/{$id}");
     }
 
     /**
@@ -33,7 +43,7 @@ trait PluginTrait
     public function plugins($params = [])
     {
         return $this->get('/plugins/', [
-            'json' => $params
+            'json' => $params,
         ]);
     }
 

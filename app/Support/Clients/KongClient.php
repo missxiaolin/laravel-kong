@@ -42,6 +42,7 @@ use Illuminate\Support\Arr;
  * @method deleteConsumer($idOrName)
  *
  * @method addPlugin($params)
+ * @method getPlugin($id)
  * @method plugins($params = [])
  * @method deletePlugins($idOrName)
  */
