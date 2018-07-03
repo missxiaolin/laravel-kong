@@ -41,7 +41,9 @@ use Illuminate\Support\Arr;
  * @method updateConsumer($idOrName, $params)
  * @method deleteConsumer($idOrName)
  *
- *
+ * @method addPlugin($params)
+ * @method plugins($params = [])
+ * @method deletePlugins($idOrName)
  */
 class KongClient
 {
@@ -61,7 +63,7 @@ class KongClient
         try {
             return $handler->$name(...$arguments);
         } catch (ClientException $ex) {
-//            dump($ex->getMessage());
+            dump($ex->getMessage());
             $json = json_decode($ex->getResponse()->getBody()->getContents(), true);
             $message = Arr::get($json, 'message');
             throw new InitException($message, ErrorCode::$ENUM_KONG_API_FAIL);

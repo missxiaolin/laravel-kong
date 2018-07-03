@@ -13,6 +13,7 @@ use App\Core\InstanceTrait;
 use App\Src\Models\Node;
 use App\Support\Clients\Kong\ApiTrait;
 use App\Support\Clients\Kong\ConsumerTrait;
+use App\Support\Clients\Kong\PluginTrait;
 use App\Support\Clients\Kong\RouteTrait;
 use App\Support\Clients\Kong\ServiceTrait;
 
@@ -20,7 +21,7 @@ class KongHandler extends Client
 {
     use InstanceTrait;
 
-    use ServiceTrait, RouteTrait, ApiTrait, ConsumerTrait;
+    use ServiceTrait, RouteTrait, ApiTrait, ConsumerTrait, PluginTrait;
 
     /**
      * KongHandler constructor.
