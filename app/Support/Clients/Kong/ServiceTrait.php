@@ -63,4 +63,15 @@ trait ServiceTrait
     {
         return $this->get("/services/{$idOrName}");
     }
+
+    /**
+     * @desc   删除服务
+     * @author xl
+     * @param $idOrName
+     * @return mixed
+     */
+    public function deleteService($idOrName)
+    {
+        return $this->delete("/services/{$idOrName}");
+    }
 }

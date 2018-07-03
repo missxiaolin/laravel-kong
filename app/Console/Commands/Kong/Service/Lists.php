@@ -12,7 +12,7 @@ class Lists extends Kong
      *
      * @var string
      */
-    protected $signature = 'kong:lists';
+    protected $signature = 'kong:service:lists';
 
     /**
      * The console command description.

@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands\Kong\Service;
 
-use App\Support\Clients\KongHandler;
+use App\Support\Clients\KongClient;
 use Illuminate\Console\Command;
 
-class Services extends Command
+class Delete extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'kong:service:service';
+    protected $signature = 'kong:service:delete';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '查看Kong服务列表';
+    protected $description = 'kong Service删除';
 
     /**
      * Create a new command instance.
@@ -38,12 +38,9 @@ class Services extends Command
      */
     public function handle()
     {
-        try {
-            $client = KongHandler::getInstance();
-            $res = $client->services();
-            dd($res);
-        } catch (\Exception $ex) {
-            dump($ex->getMessage());
-        }
+        $id = '2bda353e-cd8a-4815-ba24-5effe317e9c5';
+        $client = KongClient::getInstance();
+        $res = $client->deleteService($id);
+        dump($res);
     }
 }

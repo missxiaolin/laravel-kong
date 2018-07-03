@@ -12,7 +12,7 @@ class Info extends Kong
      *
      * @var string
      */
-    protected $signature = 'kong:info {name=0} {url=0}';
+    protected $signature = 'kong:service:info {name=0} {url=0}';
 
     /**
      * The console command description.

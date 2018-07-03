@@ -22,11 +22,14 @@ use Illuminate\Support\Arr;
  * @method services($params = [])
  * @method updateService($idOrName, $params)
  * @method getService($idOrName)
+ * @method deleteService($idOrName)
  *
  * @method addRoute($params)
  * @method routes($params = [])
  * @method getRoute($id)
  * @method updateRoute($id, $params)
+ * @method deleteRoute($id)
+ *
  */
 class KongClient
 {

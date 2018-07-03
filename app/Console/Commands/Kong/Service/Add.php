@@ -12,7 +12,7 @@ class Add extends Kong
      *
      * @var string
      */
-    protected $signature = 'kong:add {name} {url}';
+    protected $signature = 'kong:service:add {name} {url}';
 
     /**
      * The console command description.

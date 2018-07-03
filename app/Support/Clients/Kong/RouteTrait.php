@@ -65,6 +65,7 @@ trait RouteTrait
      * @desc   更新路由
      * @author xl
      * @param $id
+     * @param $params
      * @return mixed
      */
     public function updateRoute($id, $params)
@@ -80,5 +81,16 @@ trait RouteTrait
         return $this->patch("/routes/{$id}", [
             'json' => $params,
         ]);
+    }
+
+    /**
+     * @desc   删除路由
+     * @author xl
+     * @param $id
+     * @return mixed
+     */
+    public function deleteRoute($id)
+    {
+        return $this->delete("/routes/{$id}");
     }
 }

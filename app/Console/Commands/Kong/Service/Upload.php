@@ -12,7 +12,7 @@ class Upload extends Kong
      *
      * @var string
      */
-    protected $signature = 'kong:upload {name=0} {url=0}';
+    protected $signature = 'kong:service:upload {name=0} {url=0}';
 
     /**
      * The console command description.
