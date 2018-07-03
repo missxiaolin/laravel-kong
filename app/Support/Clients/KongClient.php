@@ -22,6 +22,7 @@ use Illuminate\Support\Arr;
  * @method updateService($idOrName, $params)
  * @method getService($idOrName)
  * @method deleteService($idOrName)
+ * @method pluginsByService($idOrName)
  *
  * @method addRoute($params)
  * @method routes($params = [])

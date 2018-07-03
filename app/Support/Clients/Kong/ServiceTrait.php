@@ -39,6 +39,18 @@ trait ServiceTrait
     }
 
     /**
+     * @desc   某服务的插件列表
+     * @param $idOrName
+     * @author xl
+     * @params $idOrName
+     * @return mixed
+     */
+    public function pluginsByService($idOrName)
+    {
+        return $this->get("/services/{$idOrName}/plugins");
+    }
+
+    /**
      * @desc   更新服务
      * @author xl
      * @param $idOrName The service id or name
