@@ -57,7 +57,7 @@ class Add extends Kong
             'url' => $url,
         ];
         try {
-            $res = KongClient::getInstance()->add($param);
+            $res = KongClient::getInstance()->addService($param);
             dump($res);
             dump('节点添加成功！');
         } catch (\Exception $ex) {

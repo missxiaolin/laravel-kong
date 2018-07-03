@@ -53,6 +53,7 @@ class Upload extends Kong
     public function init()
     {
         $params = [
+            'name' => 'kong',
             'url' => 'http://kong.missxiaolin.com',
         ];
         dump($params);

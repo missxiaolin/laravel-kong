@@ -49,15 +49,17 @@ class Add extends Command
     public function handle()
     {
         $params = [
-            "protocols" => ["http", "https"],
-            "methods" => null,
-            "hosts" => ["kong.missxiaolin.com"],
-            "paths" => null,
+            "protocols" => ['http', 'https'],
+            "methods" => ['POST', 'GET'],
+            "hosts" => null,
+            "paths" => [
+                '/demo',
+            ],
             "regex_priority" => 0,
             "strip_path" => true,
             "preserve_host" => false,
             'service' => [
-                'id' => '2bda353e-cd8a-4815-ba24-5effe317e9c5',
+                'id' => '343dafad-5201-4e3f-8c82-a96bb8edafac',
             ],
         ];
 

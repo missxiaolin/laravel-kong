@@ -59,7 +59,7 @@ class Upload extends Command
             'name' => 'xiaolin',
             'hosts' => 'kong.missxiaolin.com',
             "methods" => 'GET,POST',
-            "uris" => "/demo",
+            "uris" => "/kong/index/kong",
             'upstream_url' => 'http://kong.missxiaolin.com',
         ];
         $id = $this->argument('id');

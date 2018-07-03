@@ -12,7 +12,7 @@ class Delete extends Command
      *
      * @var string
      */
-    protected $signature = 'kong:service:delete';
+    protected $signature = 'kong:service:delete {id}';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class Delete extends Command
      */
     public function handle()
     {
-        $id = '2bda353e-cd8a-4815-ba24-5effe317e9c5';
+        $id = $this->argument('id');
         $client = KongClient::getInstance();
         $res = $client->deleteService($id);
         dump($res);

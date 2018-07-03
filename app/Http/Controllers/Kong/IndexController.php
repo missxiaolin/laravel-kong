@@ -13,6 +13,6 @@ class IndexController
 {
     public function kong()
     {
-        return api_response([]);
+        return api_response(['kong']);
     }
 }
