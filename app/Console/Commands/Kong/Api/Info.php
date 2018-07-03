@@ -12,7 +12,7 @@ class Info extends Command
      *
      * @var string
      */
-    protected $signature = 'kong:api:info';
+    protected $signature = 'kong:api:info {id}';
 
     /**
      * The console command description.
@@ -38,7 +38,7 @@ class Info extends Command
      */
     public function handle()
     {
-        $id = '579d6bbe-0bc5-499a-a99a-2ef3b0c686c1';
+        $id = $this->argument('id');
         $client = KongClient::getInstance();
         $res = $client->getApi($id);
         dump($res);

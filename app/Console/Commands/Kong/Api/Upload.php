@@ -12,7 +12,7 @@ class Upload extends Command
      *
      * @var string
      */
-    protected $signature = 'kong:api:upload';
+    protected $signature = 'kong:api:upload {id}';
 
     /**
      * The console command description.
@@ -56,13 +56,13 @@ class Upload extends Command
     public function handle()
     {
         $params = [
-            'name' => 'kongTest',
+            'name' => 'xiaolin',
             'hosts' => 'kong.missxiaolin.com',
             "methods" => 'GET,POST',
-            "uris" => "/kong/index/kong",
+            "uris" => "/demo",
             'upstream_url' => 'http://kong.missxiaolin.com',
         ];
-        $id = '579d6bbe-0bc5-499a-a99a-2ef3b0c686c1';
+        $id = $this->argument('id');
 
         $client = KongClient::getInstance();
         $res = $client->updateApi($id, $params);

@@ -56,10 +56,10 @@ class Add extends Command
     {
         try{
             $params = [
-                'name' => 'kongTest',
+                'name' => 'xiaolin',
                 'hosts' => 'kong.missxiaolin.com',
                 "methods" => 'GET,POST',
-                "uris" => "/kong/index/kong",
+                "uris" => '/demo',
                 'upstream_url' => 'http://kong.missxiaolin.com',
             ];
             $client = KongClient::getInstance();
