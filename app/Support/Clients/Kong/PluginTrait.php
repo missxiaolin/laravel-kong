@@ -26,12 +26,27 @@ trait PluginTrait
 
     /**
      * 获取插件详情
+     * @author xl
      * @param $id
      * @return mixed
      */
     public function getPlugin($id)
     {
         return $this->get("/plugins/{$id}");
+    }
+
+    /**
+     * 修改插件
+     * @author xl
+     * @param $id
+     * @param $params
+     * @return mixed
+     */
+    public function updatePlugins($id, $params)
+    {
+        return $this->patch("/plugins/{$id}", [
+            'json' => $params,
+        ]);
     }
 
     /**
