@@ -15,4 +15,9 @@ class IndexController
     {
         return api_response(['kong']);
     }
+
+    public function add()
+    {
+        return api_response(['add']);
+    }
 }
