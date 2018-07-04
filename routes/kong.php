@@ -9,3 +9,5 @@
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
 
 Route::any('/index/add', 'IndexController@add')->name('index.add');
+
+Route::any('/user/login', 'UserController@login')->name('user.login');

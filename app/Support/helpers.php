@@ -29,6 +29,29 @@ if (!function_exists('api_response')) {
     }
 }
 
+/**
+ *
+ * @param string $errorMessage
+ * @param string $errorCode
+ * @param array $error
+ * @return json
+ */
+function response_error($errorMessage, $errorCode, $error = [])
+{
+    $response = [
+        'code' => $errorCode,
+        'message' => $errorMessage,
+        'error' => $error,
+    ];
+    $headers = implode(',', config('domain.request.headers'));
+
+    return response()->json($response)->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Credentials', 'true')
+        ->header('Content-Type', 'application/json')
+        ->header('charset', 'UTF-8')
+        ->header('Access-Control-Allow-Headers', $headers);
+}
+
 if (!function_exists('api_error')) {
 
     function api_error($code = 0, $message = null, Throwable $previous = null)

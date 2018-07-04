@@ -39,4 +39,9 @@ class ErrorCode extends Enum
      * @Message('Kong节点不存在，请先配置节点信息')
      */
     public static $ENUM_KONG_NODES_NOT_EXIST = 1002;
+
+    /**
+     * @Message('参数错误')
+     */
+    public static $ENUM_SYSTEM_API_PARAM_ERROR = 1003;
 }
