@@ -13,15 +13,11 @@ use App\Src\Basic\Form;
 
 class LoginForm extends Form
 {
-    /**
-     * @var int
-     */
-    public $userId;
-
     public function rules()
     {
         return [
-            'userId' => 'required',
+            'username' => 'required',
+            'password' => 'required',
         ];
     }
 
@@ -35,12 +31,12 @@ class LoginForm extends Form
     public function attributes()
     {
         return [
-            'userId' => 'userId',
+            'username' => '用户名',
+            'password' => '密码',
         ];
     }
 
     public function validation()
     {
-        $this->userId = array_get($this->data, 'userId');
     }
 }

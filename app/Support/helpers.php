@@ -38,18 +38,19 @@ if (!function_exists('api_response')) {
  */
 function response_error($errorMessage, $errorCode, $error = [])
 {
-    $response = [
-        'code' => $errorCode,
-        'message' => $errorMessage,
-        'error' => $error,
-    ];
-    $headers = implode(',', config('domain.request.headers'));
+    return api_response([], $errorCode, $errorMessage);
+}
 
-    return response()->json($response)->header('Access-Control-Allow-Origin', '*')
-        ->header('Access-Control-Allow-Credentials', 'true')
-        ->header('Content-Type', 'application/json')
-        ->header('charset', 'UTF-8')
-        ->header('Access-Control-Allow-Headers', $headers);
+if (!function_exists('generate_unique_id')) {
+    /**
+     * 生成唯一ID
+     * @return string
+     */
+    function generate_unique_id($index = null)
+    {
+        $token = isset($index) ? $index . ':' : '';
+        return $token . str_replace(".", '', uniqid(str_random(20), true));
+    }
 }
 
 if (!function_exists('api_error')) {

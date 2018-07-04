@@ -44,4 +44,9 @@ class ErrorCode extends Enum
      * @Message('参数错误')
      */
     public static $ENUM_SYSTEM_API_PARAM_ERROR = 1003;
+
+    /**
+     * @Message('账号密码错误')
+     */
+    public static $ENUM_SYSTEM_API_USER_ERROR = 1004;
 }
