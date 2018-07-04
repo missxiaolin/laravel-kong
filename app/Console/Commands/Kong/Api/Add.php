@@ -60,6 +60,7 @@ class Add extends Command
                 'hosts' => 'kong.missxiaolin.com',
                 "methods" => 'GET,POST',
                 "uris" => '/demo',
+                'strip_uri' => false, // 转发时前缀也带上
                 'upstream_url' => 'http://kong.missxiaolin.com',
             ];
             $client = KongClient::getInstance();

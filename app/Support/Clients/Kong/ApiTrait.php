@@ -64,7 +64,6 @@ trait ApiTrait
      */
     public function updateApi($idOrName, $params)
     {
-        unset($params['id']);
         return $this->patch("/apis/{$idOrName}", [
             'json' => $params,
         ]);

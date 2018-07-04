@@ -56,10 +56,11 @@ class Upload extends Command
     public function handle()
     {
         $params = [
-            'name' => 'xiaolin',
-            'hosts' => 'kong.missxiaolin.com',
+            'name' => 'kongAdd',
+            'hosts' => null,
             "methods" => 'GET,POST',
-            "uris" => "/kong/index/kong",
+            "uris" => "/kong/index/add",
+            'strip_uri' => false, // 转发时前缀也带上
             'upstream_url' => 'http://kong.missxiaolin.com',
         ];
         $id = $this->argument('id');
