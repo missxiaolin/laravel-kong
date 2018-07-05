@@ -107,6 +107,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 用户列表
      * @return array
      */
     public function getLists()
@@ -117,5 +118,25 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
             'pageCount' => $user->lastPage(),
             'data' => $user->items(),
         ];
+    }
+
+    /**
+     * 禁用开启用户
+     * @param $data
+     * @return mixed
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function disable($data)
+    {
+        $id = array_get($data, 'id');
+        $model = $this->findByField('id', $id)->first();
+        if (!$model) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_EXIST_ERROR);
+        }
+        $model->status = $model->status ? 0 : 1;
+        $model->save();
+        return $model;
     }
 }

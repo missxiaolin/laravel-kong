@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
 use App\Src\Form\User\UserAddForm;
+use App\Src\Form\User\UserDisableForm;
 use App\Src\Form\User\UserListForm;
 use App\Src\Repository\UsersRepository;
 
@@ -42,6 +43,7 @@ class UserController extends Controller
     }
 
     /**
+     * 用户添加
      * @param Filter $filter
      * @param UserAddForm $form
      * @param UsersRepository $repository
@@ -60,6 +62,7 @@ class UserController extends Controller
     }
 
     /**
+     * 用户列表
      * @param Filter $filter
      * @param UserListForm $form
      * @param UsersRepository $repository
@@ -77,8 +80,22 @@ class UserController extends Controller
         return api_response($response);
     }
 
-    public function status()
+    /**
+     * 禁用用户
+     * @param Filter $filter
+     * @param UserDisableForm $form
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function status(Filter $filter, UserDisableForm $form, UsersRepository $repository)
     {
-
+        $response = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $response = $repository->disable($data);
+        return api_response($response);
     }
 }

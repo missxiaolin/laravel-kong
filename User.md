@@ -106,6 +106,42 @@
 }
 ~~~
 
+#### 用户禁用、开启
+
+实例:/kong/user/status
+方式: any
+
+<table>
+    <tr>
+        <td>字段</td>
+        <td>说明</td>
+        <td>是否必填</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>用户Id</td>
+        <td>Y</td>
+    </tr>
+</table>
+
+~~~
+{
+    "data": {
+        "id": 1,
+        "name": "xiaolin",
+        "mobile": "17135501111",
+        "status": 1,
+        "expires_at": 1530783315,
+        "created_at": "2018-07-05 18:07:50",
+        "updated_at": "2018-07-05 10:07:53"
+    },
+    "code": "0",
+    "message": "ok",
+    "time": "1530785273",
+    "_ut": "0.01231"
+}
+~~~
+
 #### 用户列表
 
 实例:/kong/user/lists
