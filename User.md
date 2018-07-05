@@ -25,6 +25,7 @@
 
 #### 登陆
 实例:/kong/user/login
+方式: post
 
 <table>
     <tr>
@@ -59,6 +60,7 @@
 #### 添加用户、修改用户
 
 实例:/kong/user/add
+方式: post
 
 <table>
     <tr>
@@ -107,6 +109,7 @@
 #### 用户列表
 
 实例:/kong/user/lists
+方式: any
 
 <table>
     <tr>
