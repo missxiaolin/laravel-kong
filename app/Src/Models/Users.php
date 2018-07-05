@@ -29,5 +29,6 @@ class Users extends Model
      * @var array
      */
     protected $hidden = [
+        'password', 'token',
     ];
 }

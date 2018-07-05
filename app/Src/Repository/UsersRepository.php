@@ -27,6 +27,43 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
 
     /**
      * @param $data
+     * @return Users
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function setUser($data)
+    {
+        $id = array_get($data, 'id');
+        $mobile = array_get($data, 'mobile');
+        $model = $this->findByField('id', $id)->first();
+        if (!$model) {
+            $this->getUserMobile($mobile);
+            $model = new Users();
+        }
+        $model->name = array_get($data, 'name');
+        $model->mobile = $mobile;
+        $model->password = bcrypt(array_get($data, 'password'));
+        $model->save();
+        return $model;
+    }
+
+    /**
+     * @param $mobile
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function getUserMobile($mobile)
+    {
+        $model = $this->findByField('mobile', $mobile)->first();
+        if ($model) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_MOBILE_ERROR);
+        }
+    }
+
+    /**
+     * @param $data
      * @return mixed
      * @throws CodeException
      * @throws \ReflectionException

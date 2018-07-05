@@ -13,6 +13,7 @@ use App\Exceptions\CodeException;
 use App\Http\Controllers\Controller;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
+use App\Src\Form\User\UserAddForm;
 use App\Src\Form\User\UserListForm;
 use App\Src\Repository\UsersRepository;
 
@@ -40,10 +41,22 @@ class UserController extends Controller
         return api_response($response);
     }
 
-    public function add(Filter $filter)
+    /**
+     * @param Filter $filter
+     * @param UserAddForm $form
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function add(Filter $filter, UserAddForm $form, UsersRepository $repository)
     {
         $response = [];
-
+        $data = $filter->getData();
+        $form->validate($data);
+        $response = $repository->setUser($data);
+        return api_response($response);
     }
 
     /**
