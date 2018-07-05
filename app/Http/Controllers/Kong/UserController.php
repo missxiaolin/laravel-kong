@@ -76,4 +76,9 @@ class UserController extends Controller
         $response = $repository->getLists($data);
         return api_response($response);
     }
+
+    public function status()
+    {
+
+    }
 }
