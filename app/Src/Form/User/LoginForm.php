@@ -16,7 +16,7 @@ class LoginForm extends Form
     public function rules()
     {
         return [
-            'username' => 'required',
+            'mobile' => 'required',
             'password' => 'required',
         ];
     }
@@ -31,7 +31,7 @@ class LoginForm extends Form
     public function attributes()
     {
         return [
-            'username' => '用户名',
+            'mobile' => '手机号',
             'password' => '密码',
         ];
     }

@@ -33,8 +33,8 @@
         <td>是否必填</td>
     </tr>
     <tr>
-        <td>username</td>
-        <td>用户名称</td>
+        <td>mobile</td>
+        <td>手机号码</td>
         <td>Y</td>
     </tr>
     <tr>

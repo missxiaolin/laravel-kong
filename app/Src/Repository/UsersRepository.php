@@ -34,9 +34,9 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
      */
     public function setToken($data)
     {
-        $username = array_get($data, 'username');
+        $mobile = array_get($data, 'mobile');
         $password = array_get($data, 'password');
-        $model = $this->findByField('name', $username)->first();
+        $model = $this->findByField('mobile', $mobile)->first();
         if (!$model || !$this->checkPassword($password, $model->password)) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_ERROR);
         }
