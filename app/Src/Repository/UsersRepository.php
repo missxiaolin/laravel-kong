@@ -47,6 +47,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 校验密码
      * @param $password
      * @param $pwd
      * @return bool
@@ -55,5 +56,16 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     {
         $hasher = new BcryptHasher();
         return $hasher->check($password, $pwd);
+    }
+
+    /**
+     * 返回用户信息
+     * @param $token
+     * @return mixed
+     */
+    public function getInfoByToken($token)
+    {
+        $model = $this->findByField('token', $token)->first();
+        return $model;
     }
 }

@@ -49,4 +49,9 @@ class ErrorCode extends Enum
      * @Message('账号密码错误')
      */
     public static $ENUM_SYSTEM_API_USER_ERROR = 1004;
+
+    /**
+     * @Message('账号未登陆')
+     */
+    public static $ENUM_SYSTEM_API_LOGIN_ERROR = 1005;
 }

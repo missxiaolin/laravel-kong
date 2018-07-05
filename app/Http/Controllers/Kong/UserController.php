@@ -17,11 +17,6 @@ use App\Src\Repository\UsersRepository;
 
 class UserController extends Controller
 {
-    public function add()
-    {
-
-    }
-
     /**
      * 用户登录
      * @param Filter $filter
@@ -42,5 +37,16 @@ class UserController extends Controller
         $response['token'] = $res['token'];
 
         return api_response($response);
+    }
+
+    public function add(Filter $filter)
+    {
+        $response = [];
+
+    }
+
+    public function lists()
+    {
+
     }
 }
