@@ -116,7 +116,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         return [
             'total' => $user->total(),
             'pageCount' => $user->lastPage(),
-            'data' => $user->items(),
+            'items' => $user->items(),
         ];
     }
 
