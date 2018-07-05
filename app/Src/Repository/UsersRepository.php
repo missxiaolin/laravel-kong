@@ -68,4 +68,17 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $model = $this->findByField('token', $token)->first();
         return $model;
     }
+
+    /**
+     * @return array
+     */
+    public function getLists()
+    {
+        $user = $this->paginate(50);
+        return [
+            'total' => $user->total(),
+            'pageCount' => $user->lastPage(),
+            'data' => $user->items(),
+        ];
+    }
 }

@@ -13,6 +13,7 @@ use App\Exceptions\CodeException;
 use App\Http\Controllers\Controller;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
+use App\Src\Form\User\UserListForm;
 use App\Src\Repository\UsersRepository;
 
 class UserController extends Controller
@@ -45,8 +46,21 @@ class UserController extends Controller
 
     }
 
-    public function lists()
+    /**
+     * @param Filter $filter
+     * @param UserListForm $form
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function lists(Filter $filter, UserListForm $form, UsersRepository $repository)
     {
-
+        $response = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $response = $repository->getLists($data);
+        return api_response($response);
     }
 }

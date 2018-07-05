@@ -19,7 +19,7 @@ class Users extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'mobile', 'password', 'token'];
+    protected $fillable = ['name', 'mobile', 'password', 'token', 'status'];
 
     protected $table = 'users';
 
