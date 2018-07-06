@@ -9,6 +9,10 @@ class Local
 {
     public static $instances = [];
 
+    /**
+     * @param $name
+     * @return Logger
+     */
     private function getClient($name)
     {
         $monolog = new Logger('local');
@@ -25,6 +29,10 @@ class Local
         return $monolog;
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     public function getLogger($name)
     {
         if (!isset(self::$instances[$name]) || !(self::$instances[$name] instanceof Logger)) {
