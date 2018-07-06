@@ -118,6 +118,11 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         if ($mobile) {
             $model = $model->where(['mobile' => $mobile]);
         }
+        $create_start = array_get($data, 'create_start');
+        $create_end = array_get($data, 'create_end');
+        if ($create_start && $create_end) {
+            $model = $model->whereBetween('create', [$create_start, $create_end]);
+        }
         $user = $model->paginate(50);
         return [
             'total' => $user->total(),
