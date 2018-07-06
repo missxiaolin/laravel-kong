@@ -65,14 +65,14 @@ if (!function_exists('logger_instance')) {
      *
      * @param  string $name
      * @param  string $message
-     * @param  array  $context
+     * @param  array $context
      * @return \Illuminate\Contracts\Logging\Log|null
      */
     function logger_instance($name, $message = null, $context = [])
     {
         $logger = [
-            'body'      => $message,
-            'context'   => $context,
+            'body' => $message,
+            'context' => $context,
         ];
 
         logger_local($name, json_encode_ori($logger));
@@ -98,16 +98,17 @@ if (!function_exists('json_encode_ori')) {
 
 }
 
-if(!function_exists('logger_local')){
+if (!function_exists('logger_local')) {
     /**
      * Log a debug message to the logs.
      *
      * @param  string $name
      * @param  string $message
-     * @param  array  $context
+     * @param  array $context
      * @return \Illuminate\Contracts\Logging\Log|null
      */
-    function logger_local($name, $message = null, array $context = []){
+    function logger_local($name, $message = null, array $context = [])
+    {
 
         if (is_null($message)) {
             return app('logger_local')->getLogger($name);
@@ -115,4 +116,26 @@ if(!function_exists('logger_local')){
 
         return app('logger_local')->getLogger($name)->debug($message, $context);
     }
+}
+
+if (!function_exists('logger_factory')) {
+
+    /**
+     * Log a debug message to the logs.
+     *
+     * @param  string $name
+     * @param  string $message
+     * @param  array $context
+     * @return \Illuminate\Contracts\Logging\Log|null
+     */
+    function logger_factory($name, $message = null, array $context = [])
+    {
+
+        if (is_null($message)) {
+            return app('logger_factory')->getLogger($name);
+        }
+
+        return app('logger_factory')->getLogger($name)->debug($message, $context);
+    }
+
 }

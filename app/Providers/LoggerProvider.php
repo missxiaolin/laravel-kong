@@ -38,6 +38,10 @@ class LoggerProvider extends ServiceProvider
         $this->app->bind('logger_local', function () {
             return new Local();
         });
+
+        $this->app->bind('logger_factory', function () {
+            return new Factory();
+        });
     }
 
 }
