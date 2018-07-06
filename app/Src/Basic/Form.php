@@ -163,7 +163,23 @@ abstract class Form implements Arrayable
      */
     protected function failedValidation(MessageBag $message)
     {
-        throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_PARAM_ERROR,$message->first());
+        $this->log($message);
+        throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_PARAM_ERROR, $message->first());
+    }
+
+    /**
+     * 记录日志
+     * @param $message
+     */
+    public function log($message)
+    {
+        $error = [
+            'url' => request()->url(),
+            'method' => request()->getMethod(),
+            'data' => $this->data,
+            'error' => $message,
+        ];
+        logger_instance('validator-error', $error, request()->all());
     }
 
     /**
