@@ -10,7 +10,6 @@ namespace App\Http\Controllers\Kong;
 
 
 use App\Exceptions\CodeException;
-use App\Http\Controllers\Controller;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
 use App\Src\Form\User\UserAddForm;
@@ -18,7 +17,7 @@ use App\Src\Form\User\UserDisableForm;
 use App\Src\Form\User\UserListForm;
 use App\Src\Repository\UsersRepository;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
     /**
      * 用户登录

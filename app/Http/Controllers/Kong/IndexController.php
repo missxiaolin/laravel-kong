@@ -9,9 +9,7 @@
 namespace App\Http\Controllers\Kong;
 
 
-use App\Http\Controllers\Controller;
-
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function kong()
     {
