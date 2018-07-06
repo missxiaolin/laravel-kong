@@ -108,11 +108,17 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
 
     /**
      * 用户列表
+     * @param $data array
      * @return array
      */
-    public function getLists()
+    public function getLists($data)
     {
-        $user = $this->paginate(50);
+        $mobile = array_get($data, 'mobile');
+        $model = $this->model;
+        if ($mobile) {
+            $model = $model->where(['mobile' => $mobile]);
+        }
+        $user = $model->paginate(50);
         return [
             'total' => $user->total(),
             'pageCount' => $user->lastPage(),

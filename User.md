@@ -158,6 +158,11 @@
         <td>页数</td>
         <td>Y</td>
     </tr>
+    <tr>
+        <td>mobile</td>
+        <td>手机号</td>
+        <td>Y</td>
+    </tr>
 </table>
 
 ~~~
