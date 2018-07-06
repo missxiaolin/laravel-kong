@@ -16,8 +16,16 @@ Route::group(['middleware' => 'auth.kong'], function () {
 
 
 
-    // Kong模块
+    // Kong测试api
     Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
     Route::any('/index/add', 'IndexController@add')->name('index.add');
+
+    // Kong Service 模块
+    Route::any('/service/add', 'ServiceController@kong')->name('service.add');
+    Route::any('/service/upload', 'ServiceController@upload')->name('service.upload');
+    Route::any('/service/delete', 'ServiceController@delete')->name('service.delete');
+    Route::any('/service/info', 'ServiceController@kong')->name('service.info');
+    Route::any('/service/lists', 'ServiceController@lists')->name('service.lists');
+
 
 });

@@ -61,7 +61,7 @@ class ErrorCode extends Enum
     public static $ENUM_SYSTEM_API_USER_MOBILE_ERROR = 1006;
 
     /**
-     * @Message('用户不存在')
+     * @Message('用户已注册')
      */
     public static $ENUM_SYSTEM_API_USER_EXIST_ERROR = 1006;
 }
