@@ -107,6 +107,17 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * @param $data
+     * @return mixed
+     */
+    public function getInfoId($data)
+    {
+        $id = array_get($data, 'id');
+        $model = $this->findByField('id', $id)->first();
+        return $model;
+    }
+
+    /**
      * 用户列表
      * @param $data array
      * @return array

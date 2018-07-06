@@ -35,6 +35,6 @@ class ServiceController extends BaseController
 
     public function lists()
     {
-
+        dd(bcrypt(123456));
     }
 }

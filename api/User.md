@@ -106,6 +106,40 @@
 }
 ~~~
 
+#### 查询用户
+
+实例:/kong/user/info
+方式: post
+
+<table>
+    <tr>
+        <td>字段</td>
+        <td>说明</td>
+        <td>是否必填</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>自增Id</td>
+        <td>Y</td>
+    </tr>
+</table>
+
+~~~
+{
+    "data": {
+        "name": "1",
+        "mobile": "17135501103",
+        "updated_at": "2018-07-05 09:11:23",
+        "created_at": "2018-07-05 09:11:23",
+        "id": 13
+    },
+    "code": "0",
+    "message": "ok",
+    "time": "1530781883",
+    "_ut": "0.08316"
+}
+~~~
+
 #### 用户禁用、开启
 
 实例:/kong/user/status
