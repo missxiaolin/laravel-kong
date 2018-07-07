@@ -265,3 +265,30 @@
     "_ut": "0.08884"
 }
 ~~~
+
+#### 服务删除
+实例:/kong/service/delete
+方式: any
+
+<table>
+    <tr>
+        <td>字段</td>
+        <td>说明</td>
+        <td>是否必填</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>服务Id</td>
+        <td>Y</td>
+    </tr>
+</table>
+
+~~~
+{
+    "data": null,
+    "code": 0,
+    "message": "ok",
+    "time": "1530958731",
+    "_ut": "0.03354"
+}
+~~~

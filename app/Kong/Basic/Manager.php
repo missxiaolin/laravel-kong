@@ -76,6 +76,10 @@ class Manager
                 $response = $client->patch($this->request->getUri(), $options);
             }
 
+            if ($this->request->getMethod() == 'DELETE') {
+                $response = $client->delete($this->request->getUri(), $options);
+            }
+
         } catch (ConnectException $ce) {
 
             $post['error'] = [
