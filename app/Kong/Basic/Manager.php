@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Micro\Basic;
+namespace App\Kong\Basic;
 
 
 use GuzzleHttp\Client;

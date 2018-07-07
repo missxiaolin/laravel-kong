@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Micro\Basic;
+namespace App\Kong\Basic;
 
 class Response
 {
@@ -10,36 +10,6 @@ class Response
     public $request;
 
     public $response = [];
-
-    protected function doProcess($code, $request, $response)
-    {
-
-        $this->code = $code;
-        $this->request = $request;
-
-        if ($code == 200) {
-            $this->response = array_get($response, 'model', []);
-        } else {
-            $this->response = $response;
-        }
-
-        return $this;
-    }
-
-    protected function doProcessBody($code, $request, $response)
-    {
-
-        $this->code = $code;
-        $this->request = $request;
-
-        if ($code == 200) {
-            $this->response = array_get($response, 'body', []);
-        } else {
-            $this->response = $response;
-        }
-
-        return $this;
-    }
 
     /**
      * 发送请求

@@ -8,33 +8,9 @@
 
 namespace App\Http\Controllers\Kong;
 
-
-use App\Src\Basic\Filter;
+use App\Kong\Client\Kong\Service\Traits\ListsTraits;
 
 class ServiceController extends BaseController
 {
-    public function add(Filter $filter)
-    {
-//        $this->run($filter);
-    }
-
-    public function upload()
-    {
-
-    }
-
-    public function delete()
-    {
-
-    }
-
-    public function info()
-    {
-
-    }
-
-    public function lists()
-    {
-        dd(bcrypt(123456));
-    }
+    use ListsTraits;
 }

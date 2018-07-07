@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace App\Micro\Basic;
+namespace App\Kong\Basic;
 
 use Exception;
 
