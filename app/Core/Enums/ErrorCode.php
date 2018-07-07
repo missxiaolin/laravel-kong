@@ -64,4 +64,9 @@ class ErrorCode extends Enum
      * @Message('用户已注册')
      */
     public static $ENUM_SYSTEM_API_USER_EXIST_ERROR = 1006;
+
+    /**
+     * @Message('未找到该用户')
+     */
+    public static $ENUM_SYSTEM_API_NO_USER_ERROR = 1006;
 }

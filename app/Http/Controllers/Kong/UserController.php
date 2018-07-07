@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Kong;
 
 
+use App\Core\Enums\ErrorCode;
 use App\Exceptions\CodeException;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
@@ -113,7 +114,10 @@ class UserController extends BaseController
         $response = [];
         $data = $filter->getData();
         $form->validate($data);
-        $response = $repository->getInfoId($data);
-        return api_response($response);
+        $model = $repository->getInfoId($data);
+        if (!$model) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_NO_USER_ERROR);
+        }
+        return api_response($model);
     }
 }
