@@ -8,7 +8,12 @@
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
+Route::any('/routes/add', 'RoutesController@add')->name('service.add');
+Route::any('/routes/lists', 'RoutesController@lists')->name('service.lists');
 
+Route::any('/routes/info', 'RoutesController@info')->name('service.info');
+Route::post('/routes/upload', 'RoutesController@upload')->name('service.upload');
+Route::any('/routes/delete', 'RoutesController@delete')->name('service.delete');
 
 
 
@@ -33,7 +38,14 @@ Route::group(['middleware' => 'auth.kong'], function () {
     Route::post('/service/upload', 'ServiceController@upload')->name('service.upload');
     Route::any('/service/delete', 'ServiceController@delete')->name('service.delete');
 
+    // Kong 路由 模块
 
+
+    // Kong Api 模块
+
+    // Kong 插件 模块
+
+    // Kong 消费者 模块
 
 
 });
