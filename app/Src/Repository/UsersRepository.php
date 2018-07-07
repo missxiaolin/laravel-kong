@@ -128,7 +128,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $mobile = array_get($data, 'mobile');
         $status = array_get($data, 'status');
         $model = $this->model;
-        if ($status) {
+        if (isset($status)) {
             $model = $model->where(['status' => $status]);
         }
         if ($mobile) {
