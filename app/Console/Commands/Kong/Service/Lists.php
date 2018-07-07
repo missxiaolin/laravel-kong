@@ -35,7 +35,9 @@ class Lists extends Kong
     public function init()
     {
         $client = KongClient::getInstance();
-        $res = $client->services([]);
+        $res = $client->services([
+            'size' => 2,
+        ]);
 
         $next = $res['next'];
         $data = $res['data'];

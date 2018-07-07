@@ -40,7 +40,7 @@ class Services extends Command
     {
         try {
             $client = KongHandler::getInstance();
-            $res = $client->services();
+            $res = $client->services(['size' => 2]);
             dd($res);
         } catch (\Exception $ex) {
             dump($ex->getMessage());

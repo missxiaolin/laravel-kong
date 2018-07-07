@@ -14,7 +14,7 @@ class ListsRequest extends Request
 {
     public function getUri()
     {
-        return '/services';
+        return '/services/';
     }
 
     public function getMethod() {

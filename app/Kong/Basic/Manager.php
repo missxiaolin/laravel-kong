@@ -66,7 +66,7 @@ class Manager
         try {
 
             if ($this->request->getMethod() == 'GET') {
-                $response = $client->get($this->request->getUri());
+                $response = $client->get($this->request->getUri(), $options);
             }
             if ($this->request->getMethod() == 'POST') {
                 $response = $client->post($this->request->getUri(), $options);
