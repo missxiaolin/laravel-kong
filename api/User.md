@@ -212,6 +212,11 @@
         <td>创建结束时间</td>
         <td>N</td>
     </tr>
+    <tr>
+        <td>size</td>
+        <td>分页个数</td>
+        <td>N</td>
+    </tr>
 </table>
 
 ~~~

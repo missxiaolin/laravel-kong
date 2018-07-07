@@ -124,6 +124,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
      */
     public function getLists($data)
     {
+        $size = array_get($data, 'size') ?? 50;
         $mobile = array_get($data, 'mobile');
         $status = array_get($data, 'status');
         $model = $this->model;
@@ -138,7 +139,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         if ($create_start && $create_end) {
             $model = $model->whereBetween('create', [$create_start, $create_end]);
         }
-        $user = $model->paginate(50);
+        $user = $model->paginate($size);
         return [
             'total' => $user->total(),
             'pageCount' => $user->lastPage(),
