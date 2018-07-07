@@ -16,6 +16,14 @@ use App\Src\Basic\Filter;
 
 trait ListsTraits
 {
+    /**
+     * @param Filter $filter
+     * @param ListForm $form
+     * @param ListsRequest $request
+     * @param ListsResponse $response
+     * @param Kong $manager
+     * @return mixed
+     */
     public function lists(Filter $filter, ListForm $form, ListsRequest $request, ListsResponse $response, Kong $manager)
     {
         return $this->run($filter, $form, $request, $response, $manager);

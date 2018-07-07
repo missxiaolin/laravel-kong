@@ -6,8 +6,6 @@ namespace App\Kong\Basic;
 use GuzzleHttp\Client;
 use Exception;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\ServerException;
-use GuzzleHttp\Exception\BadResponseException;
 
 class Manager
 {
@@ -93,46 +91,6 @@ class Manager
 
             throw new Exception($this->errorMessage, 500);
 
-        } catch (BadResponseException $be) {
-
-            $post['error'] = [
-                'errorCode' => $be->getCode(),
-                'errorMessage' => $be->getMessage(),
-                'errorFile' => $be->getFile(),
-                'errorLine' => $be->getLine(),
-            ];
-            $post['end'] = $this->getTimeNow();
-
-            app()['micro'] = [
-                'errorCode' => 'E50202',
-                'errorMessage' => '服务未找到',
-                'errorServer' => $this->request->getName(),
-            ];
-
-            logger_instance($this->request->getBadLogName(), $post);
-
-            throw new Exception($this->errorMessage, 500);
-
-        } catch (ServerException $se) {
-
-            $post['error'] = [
-                'errorCode' => $se->getCode(),
-                'errorMessage' => $se->getMessage(),
-                'errorFile' => $se->getFile(),
-                'errorLine' => $se->getLine(),
-            ];
-            $post['end'] = $this->getTimeNow();
-
-            app()['micro'] = [
-                'errorCode' => 'E50303',
-                'errorMessage' => '服务异常',
-                'errorServer' => $this->request->getName(),
-            ];
-
-            logger_instance($this->request->getServerLogName(), $post);
-
-            throw new Exception($this->errorMessage, 500);
-
         } catch (Exception $ex) {
 
             $post['error'] = [
@@ -153,29 +111,6 @@ class Manager
 
             throw new Exception($this->errorMessage, 500);
         }
-
-        $status = $response->getStatusCode();
-
-        //状态异常
-        if ($status != 200) {
-
-            $post['error'] = [
-                'errorCode' => 'E50505',
-                'errorMessage' => 'HTTP异常',
-            ];
-            $post['end'] = $this->getTimeNow();
-
-            app()['micro'] = [
-                'errorCode' => 'E50505',
-                'errorMessage' => 'HTTP状态异常',
-                'errorServer' => $this->request->getName(),
-            ];
-
-            logger_instance($this->request->getResultFailLogName(), $post);
-
-            throw new Exception($this->errorMessage, 500);
-        }
-
 
         $body = json_decode($response->getBody(), true);
 
