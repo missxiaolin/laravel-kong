@@ -19,11 +19,11 @@ class ListsRequest extends Request
 
     public function getMethod()
     {
-        return "POST";
+        return "GET";
     }
 
     public function getName()
     {
-        return 'routes.add';
+        return 'routes.lists';
     }
 }

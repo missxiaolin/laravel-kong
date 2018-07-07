@@ -8,16 +8,15 @@
 
 namespace App\Kong\Client\Kong\Routes\Traits;
 
-
-use App\Kong\Client\Kong\Routes\Form\AddForm;
-use App\Kong\Client\Kong\Routes\Request\AddRequest;
-use App\Kong\Client\Kong\Routes\Response\AddResponse;
+use App\Kong\Client\Kong\Routes\Form\UploadForm;
+use App\Kong\Client\Kong\Routes\Request\UploadRequest;
+use App\Kong\Client\Kong\Routes\Response\UploadResponse;
 use App\Kong\Manager\Kong;
 use App\Src\Basic\Filter;
 
 trait UploadTraits
 {
-    public function add(Filter $filter, AddForm $form, AddRequest $request, AddResponse $response, Kong $manager)
+    public function upload(Filter $filter, UploadForm $form, UploadRequest $request, UploadResponse $response, Kong $manager)
     {
     }
 }

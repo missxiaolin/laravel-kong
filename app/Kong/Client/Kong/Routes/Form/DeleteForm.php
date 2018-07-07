@@ -15,7 +15,7 @@ class DeleteForm extends Form
     public function rules()
     {
         return [
-
+            'id' => 'required',
         ];
     }
 
@@ -29,6 +29,7 @@ class DeleteForm extends Form
     public function attributes()
     {
         return [
+            'id' => '路由Id',
         ];
     }
 

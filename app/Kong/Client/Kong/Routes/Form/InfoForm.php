@@ -16,7 +16,7 @@ class InfoForm extends Form
     public function rules()
     {
         return [
-
+            'id',
         ];
     }
 
@@ -30,6 +30,7 @@ class InfoForm extends Form
     public function attributes()
     {
         return [
+            'id' => '路由Id',
         ];
     }
 

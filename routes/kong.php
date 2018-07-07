@@ -9,15 +9,6 @@
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
 
-Route::any('/routes/lists', 'RoutesController@lists')->name('service.lists');
-
-Route::any('/routes/info', 'RoutesController@info')->name('service.info');
-Route::post('/routes/upload', 'RoutesController@upload')->name('service.upload');
-Route::any('/routes/delete', 'RoutesController@delete')->name('service.delete');
-
-
-
-
 Route::group(['middleware' => 'auth.kong'], function () {
     // 用户模块
     Route::any('/user/status', 'UserController@status')->name('user.add');
@@ -39,9 +30,11 @@ Route::group(['middleware' => 'auth.kong'], function () {
     Route::any('/service/delete', 'ServiceController@delete')->name('service.delete');
 
     // Kong 路由 模块
-
-    Route::post('/routes/add', 'RoutesController@add')->name('service.add');
-
+    Route::any('/routes/lists', 'RoutesController@lists')->name('routes.lists');
+    Route::post('/routes/add', 'RoutesController@add')->name('routes.add');
+    Route::post('/routes/upload', 'RoutesController@upload')->name('routes.upload');
+    Route::any('/routes/delete', 'RoutesController@delete')->name('routes.delete');
+    Route::any('/routes/info', 'RoutesController@info')->name('routes.info');
 
     // Kong Api 模块
 

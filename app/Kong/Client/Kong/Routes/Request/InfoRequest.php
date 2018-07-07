@@ -14,16 +14,16 @@ class InfoRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/';
+        return '/routes/' . $this->data['id'];
     }
 
     public function getMethod()
     {
-        return "POST";
+        return "GET";
     }
 
     public function getName()
     {
-        return 'routes.add';
+        return 'routes.info';
     }
 }

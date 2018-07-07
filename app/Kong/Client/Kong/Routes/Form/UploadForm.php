@@ -15,7 +15,11 @@ class UploadForm extends Form
     public function rules()
     {
         return [
-
+            'id' => 'required',
+            'service.id' => 'required',
+            'protocols' => 'required',
+            'methods' => 'required',
+            'paths' => 'required',
         ];
     }
 
@@ -29,6 +33,11 @@ class UploadForm extends Form
     public function attributes()
     {
         return [
+            'id' => '服务Id',
+            'service.id' => '服务Id',
+            'protocols' => '协议列表',
+            'methods' => '方法列表',
+            'paths' => '路径列表',
         ];
     }
 

@@ -14,16 +14,16 @@ class DeleteRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/';
+        return '/routes/' . $this->data['id'];
     }
 
     public function getMethod()
     {
-        return "POST";
+        return "DELETE";
     }
 
     public function getName()
     {
-        return 'routes.add';
+        return 'routes.delete';
     }
 }

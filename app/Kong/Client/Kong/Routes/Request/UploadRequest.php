@@ -14,16 +14,16 @@ class UploadRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/';
+        return '/routes/' . $this->data['id'];
     }
 
     public function getMethod()
     {
-        return "POST";
+        return "PATCH";
     }
 
     public function getName()
     {
-        return 'routes.add';
+        return 'routes.upload';
     }
 }
