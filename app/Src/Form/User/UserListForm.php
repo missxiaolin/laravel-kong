@@ -16,21 +16,18 @@ class UserListForm extends Form
     public function rules()
     {
         return [
-            'page' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'required' => ':attribute必填。',
         ];
     }
 
     public function attributes()
     {
         return [
-            'page' => '页数',
         ];
     }
 
