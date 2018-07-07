@@ -137,7 +137,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $create_start = array_get($data, 'create_start');
         $create_end = array_get($data, 'create_end');
         if ($create_start && $create_end) {
-            $model = $model->whereBetween('create', [$create_start, $create_end]);
+            $model = $model->whereBetween('created_at', [$create_start, $create_end]);
         }
         $user = $model->paginate($size);
         return [
