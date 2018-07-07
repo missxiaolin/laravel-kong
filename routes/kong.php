@@ -8,7 +8,7 @@
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
-Route::any('/routes/add', 'RoutesController@add')->name('service.add');
+
 Route::any('/routes/lists', 'RoutesController@lists')->name('service.lists');
 
 Route::any('/routes/info', 'RoutesController@info')->name('service.info');
@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth.kong'], function () {
     Route::any('/service/delete', 'ServiceController@delete')->name('service.delete');
 
     // Kong 路由 模块
+
+    Route::post('/routes/add', 'RoutesController@add')->name('service.add');
 
 
     // Kong Api 模块
