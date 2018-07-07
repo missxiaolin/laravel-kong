@@ -149,3 +149,43 @@
     "_ut": "0.08884"
 }
 ~~~
+
+#### 服务详情
+实例:/kong/service/info
+方式: any
+
+<table>
+    <tr>
+        <td>字段</td>
+        <td>说明</td>
+        <td>是否必填</td>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>服务Id</td>
+        <td>Y</td>
+    </tr>
+</table>
+
+~~~
+{
+    "data": {
+        "host": "kong.missxiaolin.com",
+        "created_at": 1530927005,
+        "connect_timeout": 60000,
+        "id": "0e6ee85b-f794-4add-8531-3e8d6e97ac4e",
+        "protocol": "http",
+        "name": "ac231",
+        "read_timeout": 60000,
+        "port": 80,
+        "path": null,
+        "updated_at": 1530927005,
+        "retries": 5,
+        "write_timeout": 60000
+    },
+    "code": "0",
+    "message": "ok",
+    "time": "1530779715",
+    "_ut": "0.08884"
+}
+~~~

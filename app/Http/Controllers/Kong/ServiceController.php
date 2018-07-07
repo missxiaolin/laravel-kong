@@ -9,9 +9,10 @@
 namespace App\Http\Controllers\Kong;
 
 use App\Kong\Client\Kong\Service\Traits\AddTraits;
+use App\Kong\Client\Kong\Service\Traits\InfoTraits;
 use App\Kong\Client\Kong\Service\Traits\ListsTraits;
 
 class ServiceController extends BaseController
 {
-    use ListsTraits, AddTraits;
+    use ListsTraits, AddTraits, InfoTraits;
 }
