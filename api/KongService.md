@@ -47,24 +47,22 @@
 
 ~~~
 {
-    "data": {
-        [
-            {
-                "host": "kong.missxiaolin.com",
-                "created_at": 1530595589,
-                "connect_timeout": 60000,
-                "id": "343dafad-5201-4e3f-8c82-a96bb8edafac",
-                "protocol": "http",
-                "name": "demo",
-                "read_timeout": 60000,
-                "port": 80,
-                "path": null,
-                "updated_at": 1530595589,
-                "retries": 5,
-                "write_timeout": 60000
-            }
-        ]
-    },
+    "data": [
+        {
+            "host": "kong.missxiaolin.com",
+            "created_at": 1530595589,
+            "connect_timeout": 60000,
+            "id": "343dafad-5201-4e3f-8c82-a96bb8edafac",
+            "protocol": "http",
+            "name": "demo",
+            "read_timeout": 60000,
+            "port": 80,
+            "path": null,
+            "updated_at": 1530595589,
+            "retries": 5,
+            "write_timeout": 60000
+        }
+    ],
     "code": "0",
     "message": "ok",
     "time": "1530779715",
