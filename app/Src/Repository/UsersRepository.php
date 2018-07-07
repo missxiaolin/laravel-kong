@@ -125,7 +125,11 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     public function getLists($data)
     {
         $mobile = array_get($data, 'mobile');
+        $status = array_get($data, 'status');
         $model = $this->model;
+        if ($status) {
+            $model = $model->where(['status' => $status]);
+        }
         if ($mobile) {
             $model = $model->where(['mobile' => $mobile]);
         }

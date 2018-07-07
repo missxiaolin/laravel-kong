@@ -198,6 +198,11 @@
         <td>N</td>
     </tr>
     <tr>
+        <td>status</td>
+        <td>状态</td>
+        <td>N</td>
+    </tr>
+    <tr>
         <td>create_start</td>
         <td>创建开始时间</td>
         <td>N</td>
