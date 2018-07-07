@@ -67,8 +67,13 @@ class Manager
 
             if ($this->request->getMethod() == 'GET') {
                 $response = $client->get($this->request->getUri());
-            } else {
+            }
+            if ($this->request->getMethod() == 'POST') {
                 $response = $client->post($this->request->getUri(), $options);
+            }
+
+            if ($this->request->getMethod() == 'PATCH') {
+                $response = $client->patch($this->request->getUri(), $options);
             }
 
         } catch (ConnectException $ce) {
@@ -92,6 +97,7 @@ class Manager
             throw new Exception($this->errorMessage, 500);
 
         } catch (Exception $ex) {
+            dd($ex->getMessage());
 
             $post['error'] = [
                 'errorCode' => $ex->getCode(),
