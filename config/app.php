@@ -180,6 +180,9 @@ return [
         // 日志
         App\Providers\LoggerProvider::class,
 
+        // sql
+        App\Providers\SqlQueryServiceProvider::class,
+
     ],
 
     /*
