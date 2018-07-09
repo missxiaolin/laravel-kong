@@ -37,10 +37,25 @@ Route::group(['middleware' => 'auth.kong'], function () {
     Route::any('/routes/info', 'RoutesController@info')->name('routes.info');
 
     // Kong Api 模块
+    Route::any('/api/lists', 'ApiController@lists')->name('api.lists');
+    Route::any('/api/add', 'ApiController@add')->name('api.add');
+    Route::any('/api/upload', 'ApiController@upload')->name('api.upload');
+    Route::any('/api/delete', 'ApiController@delete')->name('api.delete');
+    Route::any('/api/info', 'ApiController@info')->name('api.info');
 
     // Kong 插件 模块
+    Route::any('/plugins/lists', 'PluginsController@lists')->name('plugins.lists');
+    Route::any('/plugins/add', 'PluginsController@add')->name('plugins.add');
+    Route::any('/plugins/upload', 'PluginsController@upload')->name('plugins.upload');
+    Route::any('/plugins/delete', 'PluginsController@delete')->name('plugins.delete');
+    Route::any('/plugins/info', 'PluginsController@info')->name('plugins.info');
 
     // Kong 消费者 模块
+    Route::any('/consumer/lists', 'ConsumerController@lists')->name('consumer.lists');
+    Route::any('/consumer/add', 'ConsumerController@add')->name('consumer.add');
+    Route::any('/consumer/upload', 'ConsumerController@upload')->name('consumer.upload');
+    Route::any('/consumer/delete', 'ConsumerController@delete')->name('consumer.delete');
+    Route::any('/consumer/info', 'ConsumerController@info')->name('consumer.info');
 
 
 });
