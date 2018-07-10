@@ -101,7 +101,7 @@ class Manager
             throw new Exception($this->errorMessage, 500);
 
         } catch (Exception $ex) {
-            dd($ex->getMessage());
+//            dd($ex->getMessage());
 
             $post['error'] = [
                 'errorCode' => $ex->getCode(),
