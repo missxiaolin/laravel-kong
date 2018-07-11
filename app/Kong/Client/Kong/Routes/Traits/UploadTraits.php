@@ -16,7 +16,16 @@ use App\Src\Basic\Filter;
 
 trait UploadTraits
 {
+    /**
+     * @param Filter $filter
+     * @param UploadForm $form
+     * @param UploadRequest $request
+     * @param UploadResponse $response
+     * @param Kong $manager
+     * @return mixed
+     */
     public function upload(Filter $filter, UploadForm $form, UploadRequest $request, UploadResponse $response, Kong $manager)
     {
+        return $this->run($filter, $form, $request, $response, $manager);
     }
 }
