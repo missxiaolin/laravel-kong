@@ -8,9 +8,9 @@
 
 namespace App\Kong\Client\Kong\Plugins\Traits;
 
-use App\Kong\Client\Kong\Routes\Form\UploadForm;
-use App\Kong\Client\Kong\Routes\Request\UploadRequest;
-use App\Kong\Client\Kong\Routes\Response\UploadResponse;
+use App\Kong\Client\Kong\Plugins\Form\UploadForm;
+use App\Kong\Client\Kong\Plugins\Request\UploadRequest;
+use App\Kong\Client\Kong\Plugins\Response\UploadResponse;
 use App\Kong\Manager\Kong;
 use App\Src\Basic\Filter;
 

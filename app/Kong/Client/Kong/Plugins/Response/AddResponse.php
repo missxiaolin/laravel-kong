@@ -12,5 +12,14 @@ use App\Kong\Basic\Response;
 
 class AddResponse extends Response
 {
-
+    /**
+     * 请求失败
+     * @param array $request
+     * @param array $response
+     * @return array
+     */
+    public function fail($request = [], $response = [])
+    {
+        return api_response($response, 500, '添加失败');
+    }
 }

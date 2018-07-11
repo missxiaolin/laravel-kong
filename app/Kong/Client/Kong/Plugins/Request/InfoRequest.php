@@ -14,7 +14,7 @@ class InfoRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/' . $this->data['id'];
+        return '/plugins/' . $this->data['id'];
     }
 
     public function getMethod()
@@ -24,6 +24,6 @@ class InfoRequest extends Request
 
     public function getName()
     {
-        return 'routes.info';
+        return 'plugins.info';
     }
 }

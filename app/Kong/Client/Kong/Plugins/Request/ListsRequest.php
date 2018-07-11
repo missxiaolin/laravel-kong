@@ -14,7 +14,7 @@ class ListsRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/';
+        return '/plugins/';
     }
 
     public function getMethod()
@@ -24,6 +24,6 @@ class ListsRequest extends Request
 
     public function getName()
     {
-        return 'routes.lists';
+        return 'plugins.lists';
     }
 }

@@ -8,13 +8,6 @@
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
-
-
-
-
-
-
-
 Route::group(['middleware' => 'auth.kong'], function () {
     // 用户模块
     Route::any('/user/status', 'UserController@status')->name('user.add');
@@ -51,8 +44,8 @@ Route::group(['middleware' => 'auth.kong'], function () {
 
     // Kong 插件 模块
     Route::any('/plugins/lists', 'PluginsController@lists')->name('plugins.lists');
-    Route::any('/plugins/add', 'PluginsController@add')->name('plugins.add');
-    Route::any('/plugins/upload', 'PluginsController@upload')->name('plugins.upload');
+    Route::post('/plugins/add', 'PluginsController@add')->name('plugins.add');
+    Route::post('/plugins/upload', 'PluginsController@upload')->name('plugins.upload');
     Route::any('/plugins/delete', 'PluginsController@delete')->name('plugins.delete');
     Route::any('/plugins/info', 'PluginsController@info')->name('plugins.info');
 
