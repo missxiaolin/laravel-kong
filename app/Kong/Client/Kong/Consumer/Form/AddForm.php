@@ -16,10 +16,7 @@ class AddForm extends Form
     public function rules()
     {
         return [
-            'service.id' => 'required',
-            'protocols' => 'required',
-            'methods' => 'required',
-            'paths' => 'required',
+            'username' => 'required',
         ];
     }
 
@@ -33,7 +30,7 @@ class AddForm extends Form
     public function attributes()
     {
         return [
-            'service.id' => '服务Id',
+            'username' => '用户名称',
         ];
     }
 

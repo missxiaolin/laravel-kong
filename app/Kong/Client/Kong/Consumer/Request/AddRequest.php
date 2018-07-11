@@ -14,7 +14,7 @@ class AddRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/';
+        return '/consumers/';
     }
 
     public function getMethod()
@@ -24,6 +24,6 @@ class AddRequest extends Request
 
     public function getName()
     {
-        return 'routes.add';
+        return 'consumers.add';
     }
 }

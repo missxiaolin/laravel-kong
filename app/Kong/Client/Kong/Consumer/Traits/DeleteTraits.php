@@ -9,9 +9,9 @@
 namespace App\Kong\Client\Kong\Consumer\Traits;
 
 
-use App\Kong\Client\Kong\Routes\Form\DeleteForm;
-use App\Kong\Client\Kong\Routes\Request\DeleteRequest;
-use App\Kong\Client\Kong\Routes\Response\DeleteResponse;
+use App\Kong\Client\Kong\Consumer\Form\DeleteForm;
+use App\Kong\Client\Kong\Consumer\Request\DeleteRequest;
+use App\Kong\Client\Kong\Consumer\Response\DeleteResponse;
 use App\Kong\Manager\Kong;
 use App\Src\Basic\Filter;
 

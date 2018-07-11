@@ -9,6 +9,12 @@
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
 
+
+
+
+
+
+
 Route::group(['middleware' => 'auth.kong'], function () {
     // 用户模块
     Route::any('/user/status', 'UserController@status')->name('user.add');
@@ -52,10 +58,9 @@ Route::group(['middleware' => 'auth.kong'], function () {
 
     // Kong 消费者 模块
     Route::any('/consumer/lists', 'ConsumerController@lists')->name('consumer.lists');
-    Route::any('/consumer/add', 'ConsumerController@add')->name('consumer.add');
-    Route::any('/consumer/upload', 'ConsumerController@upload')->name('consumer.upload');
-    Route::any('/consumer/delete', 'ConsumerController@delete')->name('consumer.delete');
+    Route::post('/consumer/add', 'ConsumerController@add')->name('consumer.add');
+    Route::post('/consumer/upload', 'ConsumerController@upload')->name('consumer.upload');
     Route::any('/consumer/info', 'ConsumerController@info')->name('consumer.info');
-
+    Route::any('/consumer/delete', 'ConsumerController@delete')->name('consumer.delete');
 
 });
