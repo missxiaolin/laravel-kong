@@ -178,7 +178,7 @@
     </tr>
     <tr>
         <td>id</td>
-        <td>服务Id</td>
+        <td>消费者Id</td>
         <td>Y</td>
     </tr>
 </table>
