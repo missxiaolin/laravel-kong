@@ -30,7 +30,7 @@ class InfoForm extends Form
     public function attributes()
     {
         return [
-            'id' => '路由Id',
+            'id' => '消费者Id',
         ];
     }
 

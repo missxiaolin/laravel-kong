@@ -29,7 +29,7 @@ class UploadForm extends Form
     public function attributes()
     {
         return [
-            'id' => '服务Id',
+            'id' => '插件Id',
         ];
     }
 
