@@ -78,7 +78,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_ERROR);
         }
         $model->token = generate_unique_id();
-        $model->expires_at = time() + 3600;
+        $model->expires_at = time() + 3600 * 24;
         $model->save();
         return $model;
     }
