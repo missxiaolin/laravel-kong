@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: mac
+ * Date: 2018/7/7
+ * Time: 下午8:15
+ */
+
+namespace App\Kong\Client\Kong\Plugins\Response;
+
+use App\Kong\Basic\Response;
+
+class InfoResponse extends Response
+{
+
+}
