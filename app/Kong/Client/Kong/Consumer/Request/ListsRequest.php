@@ -24,6 +24,6 @@ class ListsRequest extends Request
 
     public function getName()
     {
-        return 'routes.consumers';
+        return 'consumers.lists';
     }
 }

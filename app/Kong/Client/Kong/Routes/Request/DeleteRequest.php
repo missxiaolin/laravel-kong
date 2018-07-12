@@ -14,7 +14,7 @@ class DeleteRequest extends Request
 {
     public function getUri()
     {
-        return '/plugins/' . $this->data['id'];
+        return '/routes/' . $this->data['id'];
     }
 
     public function getMethod()
@@ -24,6 +24,6 @@ class DeleteRequest extends Request
 
     public function getName()
     {
-        return 'plugins.delete';
+        return 'routes.delete';
     }
 }

@@ -14,7 +14,7 @@ class UploadRequest extends Request
 {
     public function getUri()
     {
-        return '/routes/' . $this->data['id'];
+        return '/apis/' . $this->data['id'];
     }
 
     public function getMethod()
@@ -24,6 +24,6 @@ class UploadRequest extends Request
 
     public function getName()
     {
-        return 'routes.upload';
+        return 'apis.upload';
     }
 }

@@ -8,9 +8,9 @@
 
 namespace App\Kong\Client\Kong\Api\Traits;
 
-use App\Kong\Client\Kong\Routes\Form\InfoForm;
-use App\Kong\Client\Kong\Routes\Request\InfoRequest;
-use App\Kong\Client\Kong\Routes\Response\InfoResponse;
+use App\Kong\Client\Kong\Api\Form\InfoForm;
+use App\Kong\Client\Kong\Api\Request\InfoRequest;
+use App\Kong\Client\Kong\Api\Response\InfoResponse;
 use App\Kong\Manager\Kong;
 use App\Src\Basic\Filter;
 

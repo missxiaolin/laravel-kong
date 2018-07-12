@@ -37,8 +37,8 @@ Route::group(['middleware' => 'auth.kong'], function () {
 
     // Kong Api 模块
     Route::any('/api/lists', 'ApiController@lists')->name('api.lists');
-    Route::any('/api/add', 'ApiController@add')->name('api.add');
-    Route::any('/api/upload', 'ApiController@upload')->name('api.upload');
+    Route::post('/api/add', 'ApiController@add')->name('api.add');
+    Route::post('/api/upload', 'ApiController@upload')->name('api.upload');
     Route::any('/api/delete', 'ApiController@delete')->name('api.delete');
     Route::any('/api/info', 'ApiController@info')->name('api.info');
 

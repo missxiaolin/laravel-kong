@@ -16,10 +16,11 @@ class AddForm extends Form
     public function rules()
     {
         return [
-            'service.id' => 'required',
-            'protocols' => 'required',
+            'name' => 'required',
+            'hosts' => 'required',
             'methods' => 'required',
-            'paths' => 'required',
+            'uris' => 'required',
+            'upstream_url' => 'required',
         ];
     }
 
@@ -33,7 +34,11 @@ class AddForm extends Form
     public function attributes()
     {
         return [
-            'service.id' => '服务Id',
+            'name' => '名称',
+            'hosts' => '域名',
+            'methods' => '发送方式',
+            'uris' => '匹配路径',
+            'upstream_url' => '转发地址',
         ];
     }
 

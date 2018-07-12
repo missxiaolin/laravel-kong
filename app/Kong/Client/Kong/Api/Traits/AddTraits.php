@@ -9,9 +9,9 @@
 namespace App\Kong\Client\Kong\Api\Traits;
 
 
-use App\Kong\Client\Kong\Routes\Form\AddForm;
-use App\Kong\Client\Kong\Routes\Request\AddRequest;
-use App\Kong\Client\Kong\Routes\Response\AddResponse;
+use App\Kong\Client\Kong\Api\Form\AddForm;
+use App\Kong\Client\Kong\Api\Request\AddRequest;
+use App\Kong\Client\Kong\Api\Response\AddResponse;
 use App\Kong\Manager\Kong;
 use App\Src\Basic\Filter;
 
