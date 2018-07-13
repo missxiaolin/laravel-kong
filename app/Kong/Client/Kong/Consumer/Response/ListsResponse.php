@@ -21,9 +21,9 @@ class ListsResponse extends Response
     public function success($request = [], $response = [])
     {
         $items = array_get($response, 'data');
-        $items[] = array_map(function ($item) {
+        $items = array_map(function ($item) {
             return [
-                'created_at' => Carbon::createFromTimestamp($item['created_at'])->toDateTimeString(),
+                'created_at' => Carbon::createFromTimestamp($item['created_at'] / 1000)->toDateTimeString(),
                 'username' => $item['username'],
                 'id' => $item['id'],
             ];
