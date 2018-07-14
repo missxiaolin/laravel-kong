@@ -25,7 +25,7 @@
 
 #### 路由添加
 
-实例:/kong/routes/info
+实例:/kong/routes/add
 方式: post
 
 <table>
@@ -103,9 +103,9 @@
 }
 ~~~
 
-#### 路由添加
+#### 路由修改
 
-实例:/kong/routes/info
+实例:/kong/routes/upload
 方式: post
 
 <table>
