@@ -65,7 +65,7 @@
         <td>N</td>
     </tr>
     <tr>
-        <td>strip_path</td>
+        <td>service_id.id</td>
         <td>此路线所关联的服务。这是Route代理流量的地方。使用表单编码，表示法是service.id=<service_id>。使用JSON，使用"service":{"id":"<service_id>"}。永久链接</td>
         <td>N</td>
     </tr>
