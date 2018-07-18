@@ -43,7 +43,7 @@ abstract class Form implements Arrayable
 
     /**
      * @param array $data
-     * @return bool
+     * @return array
      * @throws CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
@@ -64,7 +64,7 @@ abstract class Form implements Arrayable
         }
         request()->merge(['form' => $this]);
 
-        return true;
+        return $this->data;
     }
 
     public function getData()
