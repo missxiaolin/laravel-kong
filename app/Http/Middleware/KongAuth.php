@@ -48,6 +48,9 @@ class KongAuth
         $repository = app(UsersRepository::class);
 
         $user = $repository->getInfoByToken($token);
+        if ($user->status) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_DISABLE_ERROR);
+        }
         if (!$user) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_LOGIN_ERROR);
         }

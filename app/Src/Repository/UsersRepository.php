@@ -5,6 +5,7 @@ namespace App\Src\Repository;
 use App\Core\Enums\ErrorCode;
 use App\Exceptions\CodeException;
 use App\Src\Models\Users;
+use App\Support\Sys;
 use Illuminate\Hashing\BcryptHasher;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Contracts\RepositoryInterface;
@@ -162,7 +163,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         if (!$model) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_EXIST_ERROR);
         }
-        $model->status = $model->status ? 0 : 1;
+        $model->status = $model->status ? Sys::USER_DISABLE : Sys::USER_NORMAL;
         $model->save();
         return $model;
     }
