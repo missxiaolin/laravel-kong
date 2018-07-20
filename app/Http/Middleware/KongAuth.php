@@ -11,6 +11,7 @@ namespace App\Http\Middleware;
 use App\Core\Enums\ErrorCode;
 use App\Exceptions\CodeException;
 use App\Src\Repository\UsersRepository;
+use App\Support\Sys;
 use Closure;
 
 class KongAuth
@@ -48,7 +49,7 @@ class KongAuth
         $repository = app(UsersRepository::class);
 
         $user = $repository->getInfoByToken($token);
-        if ($user->status) {
+        if ($user->status == Sys::USER_DISABLE) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_DISABLE_ERROR);
         }
         if (!$user) {
