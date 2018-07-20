@@ -18,5 +18,6 @@ trait UploadTraits
 {
     public function upload(Filter $filter, UploadForm $form, UploadRequest $request, UploadResponse $response, Kong $manager)
     {
+        return $this->run($filter, $form, $request, $response, $manager);
     }
 }

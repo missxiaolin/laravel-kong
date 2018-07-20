@@ -15,6 +15,7 @@ class UploadForm extends Form
     public function rules()
     {
         return [
+            'id' => 'required',
             'name' => 'required',
             'hosts' => 'required',
             'methods' => 'required',
@@ -33,6 +34,7 @@ class UploadForm extends Form
     public function attributes()
     {
         return [
+            'id' => 'apiId',
             'name' => '名称',
             'hosts' => '域名',
             'methods' => '发送方式',
