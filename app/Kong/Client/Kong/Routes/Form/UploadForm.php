@@ -33,7 +33,7 @@ class UploadForm extends Form
     public function attributes()
     {
         return [
-            'id' => '服务Id',
+            'id' => '路由Id',
             'service.id' => '服务Id',
             'protocols' => '协议列表',
             'methods' => '方法列表',
@@ -43,5 +43,8 @@ class UploadForm extends Form
 
     public function validation()
     {
+        $paths = $this->data['paths'];
+        unset($this->data['paths']);
+        $this->data['paths'][] = $paths;
     }
 }
