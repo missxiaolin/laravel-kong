@@ -39,5 +39,8 @@ class AddForm extends Form
 
     public function validation()
     {
+        $paths = $this->data['paths'];
+        unset($this->data['paths']);
+        $this->data['paths'][] = $paths;
     }
 }

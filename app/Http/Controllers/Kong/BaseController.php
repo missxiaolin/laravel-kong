@@ -25,7 +25,7 @@ class BaseController extends Controller
     public function run($filter, $form, $request, $response, $manager)
     {
         $data = $filter->getData();
-        $form->validate($data);
+        $data = $form->validate($data);
         $paramter = [];
         try {
             $request->setData($data);
