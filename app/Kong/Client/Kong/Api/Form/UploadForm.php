@@ -17,7 +17,6 @@ class UploadForm extends Form
         return [
             'id' => 'required',
             'name' => 'required',
-            'hosts' => 'required',
             'methods' => 'required',
             'uris' => 'required',
             'upstream_url' => 'required',
@@ -36,7 +35,6 @@ class UploadForm extends Form
         return [
             'id' => 'apiId',
             'name' => '名称',
-            'hosts' => '域名',
             'methods' => '发送方式',
             'uris' => '匹配路径',
             'upstream_url' => '转发地址',
