@@ -3,7 +3,7 @@
 return [
     'request' => [
         'headers' => [
-            'TOKEN',
+            'Authorization',
             'Content-Type'
         ],
     ],
