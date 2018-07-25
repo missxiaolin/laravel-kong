@@ -42,7 +42,9 @@ class Kernel extends HttpKernel
             'bindings',
         ],
 
-        'kong' => [],
+        'kong' => [
+//            \App\Http\Middleware\ApiResponseMiddleware::class
+        ],
     ];
 
     /**

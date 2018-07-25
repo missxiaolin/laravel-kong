@@ -78,7 +78,7 @@ class KongAuth
         }
 
         if (empty($token)) {
-            $token = $request->header('Authorization', '');
+            $token = $request->header('TOKEN', '');
         }
 
         return $token;
