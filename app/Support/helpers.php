@@ -11,6 +11,7 @@ if (!function_exists('api_response')) {
      */
     function api_response($data, $code = '0', $msg = 'ok')
     {
+        $host = request()->header('Origin');
         $json = [
             'data' => $data,
             'code' => $code,
@@ -19,7 +20,11 @@ if (!function_exists('api_response')) {
             '_ut' => (string)round(microtime(TRUE) - $_SERVER['REQUEST_TIME_FLOAT'], 5),
         ];
 
-        return response()->json($json);
+        $headers = implode(',', config('domain.request.headers'));
+
+        return response()->json($json)->header('Access-Control-Allow-Origin', $host)
+            ->header('Access-Control-Allow-Credentials', 'true')
+            ->header('Access-Control-Allow-Headers', $headers);
     }
 }
 
