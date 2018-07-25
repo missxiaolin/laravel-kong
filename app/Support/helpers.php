@@ -19,9 +19,7 @@ if (!function_exists('api_response')) {
             '_ut' => (string)round(microtime(TRUE) - $_SERVER['REQUEST_TIME_FLOAT'], 5),
         ];
 
-        return response()->json($json)->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Credentials', 'true')
-            ->header('Access-Control-Allow-Headers', '*');
+        return response()->json($json);
     }
 }
 
