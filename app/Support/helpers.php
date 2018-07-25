@@ -19,11 +19,13 @@ if (!function_exists('api_response')) {
             '_ut' => (string)round(microtime(TRUE) - $_SERVER['REQUEST_TIME_FLOAT'], 5),
         ];
 
-        $headers = implode(',', config('domain.request.headers'));
+//        $headers = implode(',', config('domain.request.headers'));
+//
+//        return response()->json($json)->header('Access-Control-Allow-Origin', '*')
+//            ->header('Access-Control-Allow-Credentials', 'true')
+//            ->header('Access-Control-Allow-Headers', $headers);
 
-        return response()->json($json)->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Credentials', 'true')
-            ->header('Access-Control-Allow-Headers', $headers);
+        return response()->json($json);
     }
 }
 
