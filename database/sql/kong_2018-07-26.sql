@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.18)
 # Database: kong
-# Generation Time: 2018-07-05 12:35:44 +0000
+# Generation Time: 2018-07-26 09:40:34 +0000
 # ************************************************************
 
 
@@ -69,6 +69,76 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table role
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `role`;
+
+CREATE TABLE `role` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '角色名',
+  `role_desc` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '注释',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色表';
+
+
+
+# Dump of table role_router
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `role_router`;
+
+CREATE TABLE `role_router` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '角色ID',
+  `router_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '接口ID',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ROLE_ROUTER_UNIQUE` (`role_id`,`router_id`),
+  KEY `ROUTER_INDEX` (`router_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='角色权限表';
+
+
+
+# Dump of table router
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `router`;
+
+CREATE TABLE `router` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(11) unsigned NOT NULL DEFAULT '0',
+  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '接口名',
+  `route` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '接口路由',
+  `type` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '路由类型 0自定义路由 1系统路由',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='权限表';
+
+
+
+# Dump of table user_role
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `user_role`;
+
+CREATE TABLE `user_role` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL COMMENT '用户ID',
+  `role_id` int(11) unsigned NOT NULL COMMENT '角色ID',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `USER_ROLE_UNIQUE` (`user_id`,`role_id`),
+  KEY `ROLE_INDEX` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='管理员角色表';
+
+
+
 # Dump of table users
 # ------------------------------------------------------------
 
@@ -77,6 +147,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` tinyint(2) NOT NULL DEFAULT '1',
   `mobile` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '''''',
@@ -91,18 +162,11 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
-INSERT INTO `users` (`id`, `name`, `mobile`, `password`, `token`, `status`, `expires_at`, `created_at`, `updated_at`)
+INSERT INTO `users` (`id`, `name`, `type`, `mobile`, `password`, `token`, `status`, `expires_at`, `created_at`, `updated_at`)
 VALUES
-	(1,'xiaolin','17135501105','$2y$10$bQKWHupv1EvGU3mq99k6u.YG0ob3nNvcd/.xC3bkXZBrUHzhYd/Ua','jt7HffOJp03EC4aBUBzs5b3dd843552c6357614546',1,1530783315,'2018-07-05 18:07:53','2018-07-05 10:07:53'),
-	(2,'1','432423','','',1,0,'2018-07-05 16:30:14','0000-00-00 00:00:00'),
-	(3,'23','23','','',1,0,'2018-07-05 16:30:15','0000-00-00 00:00:00'),
-	(4,'32','2121','','',1,0,'2018-07-05 16:30:16','0000-00-00 00:00:00'),
-	(5,'321321','3213124','','',1,0,'2018-07-05 16:30:16','0000-00-00 00:00:00'),
-	(6,'4567','12145','','',1,0,'2018-07-05 16:30:17','0000-00-00 00:00:00'),
-	(7,'12','12','','',1,0,'2018-07-05 16:30:17','0000-00-00 00:00:00'),
-	(8,'13','13','','',1,0,'2018-07-05 16:30:18','0000-00-00 00:00:00'),
-	(9,'1','17135501102','$2y$10$ALPnlt11WbgfipiS2oqgQe6XxqX0kJhrC2KcekWE6jak/2IJgJks6','\'\'',1,0,'2018-07-05 17:06:15','2018-07-05 09:06:15'),
-	(13,'1','17135501103','$2y$10$2Rxg.WiO4wl.KD5lLrINoeuLX64vZXSkpmsuA4HL3Eh6KoB7XYzSS','\'\'',1,0,'2018-07-05 09:11:23','2018-07-05 09:11:23');
+	(1,'xiaolin',1,'17135501105','$2y$10$bQKWHupv1EvGU3mq99k6u.YG0ob3nNvcd/.xC3bkXZBrUHzhYd/Ua','dJZQjMA8ShUqcG7TLAKf5b5993070600c469081503',1,1532683399,'2018-07-26 17:35:19','2018-07-26 09:23:19'),
+	(9,'1',0,'17135501102','$2y$10$ALPnlt11WbgfipiS2oqgQe6XxqX0kJhrC2KcekWE6jak/2IJgJks6','\'\'',1,0,'2018-07-26 14:59:34','2018-07-05 09:06:15'),
+	(10,'1',0,'17135501103','$2y$10$2Rxg.WiO4wl.KD5lLrINoeuLX64vZXSkpmsuA4HL3Eh6KoB7XYzSS','\'\'',1,0,'2018-07-26 14:59:28','2018-07-05 09:11:23');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
