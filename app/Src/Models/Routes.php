@@ -3,14 +3,14 @@
  * Created by PhpStorm.
  * User: mac
  * Date: 2018/7/26
- * Time: 下午3:19
+ * Time: 下午5:01
  */
 
 namespace App\Src\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Routes extends Model
 {
     protected $primaryKey = 'id';
 
@@ -19,9 +19,9 @@ class Role extends Model
      *
      * @var array
      */
-    protected $fillable = ['role_name', 'role_desc'];
+    protected $fillable = ['pid', 'name', 'route', 'type'];
 
-    protected $table = 'role';
+    protected $table = 'router';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -30,12 +30,4 @@ class Role extends Model
      */
     protected $hidden = [
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function routers()
-    {
-        return $this->belongsToMany(Routes::class, 'role_router', 'role_id', 'router_id', 'id', 'id');
-    }
 }

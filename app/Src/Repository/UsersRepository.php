@@ -81,6 +81,9 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $model->token = generate_unique_id();
         $model->expires_at = time() + 3600 * 24;
         $model->save();
+        // 缓存
+        $role = app(RoleRepository::class);
+        $role->reloadRouters();
         return $model;
     }
 

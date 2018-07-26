@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Users extends Model
 {
-    protected $primaryKey = 'role_id';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +32,9 @@ class Users extends Model
         'password', 'token',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role', 'user_id', 'role_id', 'id', 'id');

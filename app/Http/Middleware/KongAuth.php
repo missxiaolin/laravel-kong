@@ -49,11 +49,11 @@ class KongAuth
         $repository = app(UsersRepository::class);
 
         $user = $repository->getInfoByToken($token);
-        if ($user->status == Sys::USER_DISABLE) {
-            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_DISABLE_ERROR);
-        }
         if (!$user) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_LOGIN_ERROR);
+        }
+        if ($user->status == Sys::USER_DISABLE) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_USER_DISABLE_ERROR);
         }
         $now = time();
         if ($user->expires_at < $now) {
