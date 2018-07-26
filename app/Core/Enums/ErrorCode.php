@@ -26,6 +26,11 @@ class ErrorCode extends Enum
     public static $ENUM_SYSTEM_API_REQUEST_ILLEGAL = 403;
 
     /**
+     * @Message('非法访问')
+     */
+    public static $ENUM_ILLEGAL_REQUEST = 704;
+
+    /**
      * @Message('访问接口超时')
      */
     public static $ENUM_SYSTEM_TIMEOUT = 1000;
