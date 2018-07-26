@@ -62,5 +62,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'auth.kong' => \App\Http\Middleware\KongAuth::class,
+        'rbac.kong' => \App\Http\Middleware\RbacMiddleware::class,
     ];
 }

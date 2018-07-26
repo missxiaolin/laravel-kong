@@ -59,6 +59,7 @@ class KongAuth
         if ($user->expires_at < $now) {
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_LOGIN_ERROR);
         }
+        app()['kong.user'] = $user;
         return $next($request);
 
 

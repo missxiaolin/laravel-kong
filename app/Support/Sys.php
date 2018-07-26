@@ -13,4 +13,6 @@ class Sys
 {
     const USER_DISABLE = 0; //禁用
     const USER_NORMAL = 1; //正常
+
+    const ADMIN_USER_SUPER_TYPE = 1; // 超级管理员
 }
