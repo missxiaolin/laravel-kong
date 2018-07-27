@@ -18,4 +18,8 @@ class Sys
 
     // 角色路由缓存
     const REDIS_KEY_ROLE_ROUTER_CACHE_KEY = 'cache:role:%s:routers';
+
+    // 路由类型
+    const ADMIN_ROUTER_SYSTEM_TYPE = 1; // 系统类型
+    const ADMIN_ROUTER_NORMAL_TYPE = 0; // 自定义类型
 }
