@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Kong;
 
 use App\Src\Basic\Filter;
 use App\Src\Form\Auth\RouteListForm;
+use App\Src\Repository\RoleRepository;
 use App\Src\Repository\RoutesRepository;
 
 class RouteController extends BaseController
@@ -30,6 +31,19 @@ class RouteController extends BaseController
         $data = $filter->getData();
         $form->validate($data);
         $res = $repository->getLists($data);
+        return api_response($res);
+    }
+
+    /**
+     * 跟新缓存
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function reload()
+    {
+        $res = [];
+        // 缓存
+        $role = app(RoleRepository::class);
+        $role->reloadRouters();
         return api_response($res);
     }
 }

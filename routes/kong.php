@@ -15,6 +15,9 @@ Route::any('/index/add', 'IndexController@add')->name('index.add');
 Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     // 权限模块
     Route::any('/route/lists', 'RouteController@lists')->name('route.lists');
+    Route::any('/route/reload', 'RouteController@reload')->name('route.reload');
+    Route::any('/route/add', 'RouteController@add')->name('route.add');
+
 
     // 用户模块
     Route::any('/user/status', 'UserController@status')->name('user.add');
