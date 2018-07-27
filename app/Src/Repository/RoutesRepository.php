@@ -46,6 +46,38 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 添加规则
+     * @param $data
+     * @return Routes
+     */
+    public function save($data)
+    {
+        $id = array_get($data, 'id');
+        $name = array_get($data, 'name');
+        $route = array_get($data, 'route');
+        $type = array_get($data, 'type');
+        $model = $this->findByField('id', $id)->first();
+        if (!$model) {
+            $model = new Routes();
+        }
+        $model->name = $name;
+        $model->route = $route;
+        $model->type = $type;
+        $model->save();
+        return $model;
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function info($data)
+    {
+        $id = array_get($data, 'id');
+        return $this->findByField(['id' => $id])->first();
+    }
+
+    /**
      * @desc  获取管理员类型
      * @param $type
      * @return string
