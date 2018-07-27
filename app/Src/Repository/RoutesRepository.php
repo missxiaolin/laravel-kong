@@ -91,4 +91,19 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         }
         return '未知';
     }
+
+    /**
+     * 删除
+     * @param $data
+     * @return bool
+     */
+    public function del($data)
+    {
+        $id = array_get($data, 'id');
+        $model = $this->findByField(['id' => $id])->first();
+        if ($model) {
+            $model->delete();
+        }
+        return true;
+    }
 }

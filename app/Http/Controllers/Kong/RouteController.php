@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Kong;
 
 use App\Src\Basic\Filter;
 use App\Src\Form\Auth\RouteAddForm;
+use App\Src\Form\Auth\RouteDelForm;
 use App\Src\Form\Auth\RouteInfoForm;
 use App\Src\Form\Auth\RouteListForm;
 use App\Src\Repository\RoleRepository;
@@ -85,6 +86,24 @@ class RouteController extends BaseController
         $data = $filter->getData();
         $form->validate($data);
         $res = $repository->info($data);
+        return api_response($res);
+    }
+
+    /**
+     * @param Filter $filter
+     * @param RouteInfoForm $form
+     * @param RoutesRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \App\Exceptions\CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function delete(Filter $filter, RouteDelForm $form, RoutesRepository $repository)
+    {
+        $res = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $res = $repository->del($data);
         return api_response($res);
     }
 }

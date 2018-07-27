@@ -18,6 +18,7 @@ Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     Route::any('/route/reload', 'RouteController@reload')->name('route.reload');
     Route::post('/route/save', 'RouteController@save')->name('route.save');
     Route::any('/route/info', 'RouteController@info')->name('route.info');
+    Route::any('/route/delete', 'RouteController@delete')->name('route.delete');
 
 
     // 用户模块
