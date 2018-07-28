@@ -8,6 +8,8 @@
 
 namespace App\Src\Repository;
 
+use App\Core\Enums\ErrorCode;
+use App\Exceptions\CodeException;
 use App\Src\Models\Role;
 use App\Support\Sys;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -110,15 +112,51 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
         ];
     }
 
+    /**
+     * @param $data
+     * @return mixed
+     */
     public function search($data)
     {
-        $id = array_get($data,'id');
-        $searchText = array_get($data,'searchText');
-        $searchType = array_get($data,'searchType');
-        if ($searchType == Sys::ADMIN_ROUTER_SEARCH_TYPE_ALL){
+        $id = array_get($data, 'id');
+        $searchText = array_get($data, 'searchText');
+        $searchType = array_get($data, 'searchType');
+        if ($searchType == Sys::ADMIN_ROUTER_SEARCH_TYPE_ALL) {
             $routeRepository = app(RoutesRepository::class);
             $routes = $routeRepository->getLists($data);
             return $routes;
         }
+    }
+
+    /**
+     * @param $data
+     * @return mixed
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function updateRouter($data)
+    {
+        $roleId = array_get($data, 'roleId');
+        $routerId = array_get($data, 'routerId');
+        $model = $this->findByField(['id' => $roleId])->first();
+        if (!$model) {
+            throw new CodeException(ErrorCode::$ENUM_ROLE_NOT_EXIST);
+        }
+        $routeRepository = app(RoutesRepository::class);
+        $router = $routeRepository->info(['id' => $routerId]);
+
+        if (!$router) {
+            throw new CodeException(ErrorCode::$ENUM_ROUTER_NOT_EXIST);
+        }
+
+        $roleRouteRepository = app(RoleRouterRepository::class);
+        $rel = $roleRouteRepository->getId($data);
+
+        if ($rel) {
+            return $rel->delete();
+        }
+
+        return $roleRouteRepository->save($data);
     }
 }

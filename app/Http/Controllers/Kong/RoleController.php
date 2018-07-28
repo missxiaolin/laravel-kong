@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Kong;
 
 use App\Src\Basic\Filter;
 use App\Src\Form\Auth\RoleAddForm;
+use App\Src\Form\Auth\RoleBindingForm;
 use App\Src\Form\Auth\RoleDelForm;
 use App\Src\Form\Auth\RoleInfoForm;
 use App\Src\Form\Auth\RoleListForm;
@@ -124,6 +125,25 @@ class RoleController extends BaseController
         $data = $filter->getData();
         $form->validate($data);
         $res = $repository->search($data);
+        return api_response($res);
+    }
+
+    /**
+     * 绑定路由
+     * @param Filter $filter
+     * @param RoleSearchForm $form
+     * @param RoleRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \App\Exceptions\CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function routersUpdate(Filter $filter, RoleBindingForm $form, RoleRepository $repository)
+    {
+        $res = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $res = $repository->updateRouter($data);
         return api_response($res);
     }
 }

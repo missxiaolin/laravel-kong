@@ -79,4 +79,14 @@ class ErrorCode extends Enum
      * @Message('用户被禁用')
      */
     public static $ENUM_SYSTEM_API_USER_DISABLE_ERROR = 1007;
+
+    /**
+     * @Message('角色不存在')
+     */
+    public static $ENUM_ROLE_NOT_EXIST = 2201;
+
+    /**
+     * @Message('路由不存在')
+     */
+    public static $ENUM_ROUTER_NOT_EXIST = 2102;
 }
