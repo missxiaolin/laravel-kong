@@ -15,10 +15,12 @@ Route::any('/index/add', 'IndexController@add')->name('index.add');
 Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     // 权限模块
     Route::any('/route/lists', 'RouteController@lists')->name('route.lists');
-    Route::any('/route/reload', 'RouteController@reload')->name('route.reload');
     Route::post('/route/save', 'RouteController@save')->name('route.save');
     Route::any('/route/info', 'RouteController@info')->name('route.info');
     Route::any('/route/delete', 'RouteController@delete')->name('route.delete');
+
+    Route::any('/role/reload', 'RoleController@reload')->name('role.reload');
+    Route::any('/role/lists', 'RoleController@lists')->name('role.lists');
 
 
     // 用户模块
