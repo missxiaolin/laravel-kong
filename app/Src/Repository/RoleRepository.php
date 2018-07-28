@@ -67,6 +67,16 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * @param $data
+     * @return mixed
+     */
+    public function getIdRole($data)
+    {
+        $id = array_get($data, 'id');
+        return $this->findByField(['id' => $id])->first();
+    }
+
+    /**
      * 角色列表
      * @param $data
      * @return array
