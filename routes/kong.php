@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
 
     Route::any('/role/reload', 'RoleController@reload')->name('role.reload');
     Route::any('/role/lists', 'RoleController@lists')->name('role.lists');
+    Route::post('/role/add', 'RoleController@add')->name('role.add');
 
 
     // 用户模块

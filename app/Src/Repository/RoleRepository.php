@@ -47,6 +47,26 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 保存
+     * @param $data
+     * @return Role
+     */
+    public function save($data)
+    {
+        $id = array_get($data, 'id');
+        $roleName = array_get($data, 'roleName');
+        $roleDesc = array_get($data, 'roleDesc');
+        $model = $this->findByField('id', $id)->first();
+        if (!$model) {
+            $model = new Role();
+        }
+        $model->role_name = $roleName;
+        $model->role_desc = $roleDesc;
+        $model->save();
+        return $model;
+    }
+
+    /**
      * 角色列表
      * @param $data
      * @return array

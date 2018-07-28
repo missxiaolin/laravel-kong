@@ -10,12 +10,14 @@ namespace App\Http\Controllers\Kong;
 
 
 use App\Src\Basic\Filter;
+use App\Src\Form\Auth\RoleAddForm;
 use App\Src\Form\Auth\RoleListForm;
 use App\Src\Repository\RoleRepository;
 
 class RoleController extends BaseController
 {
     /**
+     * 列表
      * @param Filter $filter
      * @param RoleListForm $form
      * @param RoleRepository $repository
@@ -46,8 +48,22 @@ class RoleController extends BaseController
         return api_response($res);
     }
 
-    public function add()
+    /**
+     * 添加
+     * @param Filter $filter
+     * @param RoleListForm $form
+     * @param RoleRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \App\Exceptions\CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function add(Filter $filter, RoleAddForm $form, RoleRepository $repository)
     {
-
+        $res = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $res = $repository->save($data);
+        return api_response($res);
     }
 }
