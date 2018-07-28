@@ -32,7 +32,11 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
     public function getLists($data)
     {
         $size = array_get($data, 'size') ?? 50;
+        $name = array_get($data, 'searchText');
         $model = $this->model;
+        if ($name) {
+            $model = $model->where('name', 'like', '%' . $name . '%');
+        }
         $routes = $model->paginate($size);
         $items = $routes->items();
         foreach ($items as &$item) {

@@ -118,14 +118,28 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
      */
     public function search($data)
     {
-        $id = array_get($data, 'id');
-        $searchText = array_get($data, 'searchText');
+        $roleId = array_get($data, 'roleId');
         $searchType = array_get($data, 'searchType');
-        if ($searchType == Sys::ADMIN_ROUTER_SEARCH_TYPE_ALL) {
-            $routeRepository = app(RoutesRepository::class);
-            $routes = $routeRepository->getLists($data);
-            return $routes;
+        $routes = [];
+
+        $model = $this->getIdRole(['id' => $roleId]);
+
+        $routers = $model->routers;
+
+        foreach ($routers ?? [] as $router) {
+            $routes[] = $router->id;
         }
+
+        $routeRepository = app(RoutesRepository::class);
+        $routers = $routeRepository->getLists($data);
+
+        // 循环数据判断是否绑定
+        foreach ($routers['items'] ?? [] as &$router) {
+            $bound = $searchType == Sys::ADMIN_ROUTER_SEARCH_TYPE_BOUND ?: in_array($router->id, $routes);
+            $router->bound = $bound;
+        }
+
+        return $routers;
     }
 
     /**
