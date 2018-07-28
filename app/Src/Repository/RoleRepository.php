@@ -109,4 +109,16 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
             'items' => $items,
         ];
     }
+
+    public function search($data)
+    {
+        $id = array_get($data,'id');
+        $searchText = array_get($data,'searchText');
+        $searchType = array_get($data,'searchType');
+        if ($searchType == Sys::ADMIN_ROUTER_SEARCH_TYPE_ALL){
+            $routeRepository = app(RoutesRepository::class);
+            $routes = $routeRepository->getLists($data);
+            return $routes;
+        }
+    }
 }
