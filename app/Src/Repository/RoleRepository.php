@@ -67,6 +67,7 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 详情
      * @param $data
      * @return mixed
      */
@@ -74,6 +75,21 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
     {
         $id = array_get($data, 'id');
         return $this->findByField(['id' => $id])->first();
+    }
+
+    /**
+     * 删除
+     * @param $data
+     * @return bool
+     */
+    public function del($data)
+    {
+        $id = array_get($data, 'id');
+        $model = $this->findByField(['id' => $id])->first();
+        if ($model) {
+            $model->delete();
+        }
+        return true;
     }
 
     /**

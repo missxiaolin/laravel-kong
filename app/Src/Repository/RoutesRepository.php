@@ -68,6 +68,7 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 详情
      * @param $data
      * @return mixed
      */
