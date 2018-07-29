@@ -17,6 +17,7 @@ use App\Src\Form\User\UserAddForm;
 use App\Src\Form\User\UserDisableForm;
 use App\Src\Form\User\UserInfoForm;
 use App\Src\Form\User\UserListForm;
+use App\Src\Form\User\UserRolesForm;
 use App\Src\Repository\UsersRepository;
 
 class UserController extends BaseController
@@ -119,5 +120,24 @@ class UserController extends BaseController
             throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_NO_USER_ERROR);
         }
         return api_response($model);
+    }
+
+    /**
+     * 获取用户角色
+     * @param Filter $filter
+     * @param UserInfoForm $form
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function roles(Filter $filter, UserRolesForm $form, UsersRepository $repository)
+    {
+        $response = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $response = $repository->getRoles($data);
+        return api_response($response);
     }
 }

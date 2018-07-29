@@ -28,12 +28,14 @@ Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     Route::post('/role/routers', 'RoleController@routers')->name('role.routers');
     Route::post('/role/routers/update', 'RoleController@routersUpdate')->name('role.routers.update');
 
-
     // 用户模块
     Route::any('/user/status', 'UserController@status')->name('user.add');
     Route::any('/user/lists', 'UserController@lists')->name('user.lists');
     Route::post('/user/add', 'UserController@add')->name('user.add');
     Route::get('/user/info', 'UserController@info')->name('user.info');
+    Route::get('/user/roles', 'UserController@roles')->name('user.roles');
+
+
 
     // Kong Service 模块
     Route::any('/service/lists', 'ServiceController@lists')->name('service.lists');

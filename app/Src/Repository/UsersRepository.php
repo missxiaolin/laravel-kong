@@ -167,4 +167,30 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $model->save();
         return $model;
     }
+
+    /**
+     * 获取角色
+     * @param $data
+     * @return mixed
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function getRoles($data)
+    {
+        $userId = array_get($data, 'userId');
+        $user = $this->getInfoId(['id' => $userId]);
+        if (!$user) {
+            throw new CodeException(ErrorCode::$ENUM_SYSTEM_API_NO_USER_ERROR);
+        }
+        $roles = $user->roles->toArray();
+        $mine = array_column($roles, 'id');
+        $roleRepository = app(RoleRepository::class);
+        $roles = $roleRepository->getLists($data);
+
+        foreach ($roles['items'] ?? [] as &$item) {
+            $item->bound = in_array($item->id, $mine);
+        }
+        return $roles;
+    }
 }
