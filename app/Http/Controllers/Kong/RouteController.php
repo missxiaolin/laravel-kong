@@ -77,7 +77,7 @@ class RouteController extends BaseController
 
     /**
      * @param Filter $filter
-     * @param RouteInfoForm $form
+     * @param RouteDelForm $form
      * @param RoutesRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException

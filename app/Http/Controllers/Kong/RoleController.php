@@ -55,7 +55,7 @@ class RoleController extends BaseController
     /**
      * 添加
      * @param Filter $filter
-     * @param RoleListForm $form
+     * @param RoleAddForm $form
      * @param RoleRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException
@@ -74,7 +74,7 @@ class RoleController extends BaseController
     /**
      * 添加
      * @param Filter $filter
-     * @param RoleListForm $form
+     * @param RoleInfoForm $form
      * @param RoleRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException
@@ -93,7 +93,7 @@ class RoleController extends BaseController
     /**
      * 删除
      * @param Filter $filter
-     * @param RoleInfoForm $form
+     * @param RoleDelForm $form
      * @param RoleRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException
@@ -112,7 +112,7 @@ class RoleController extends BaseController
     /**
      * 获取某角色绑定的路由
      * @param Filter $filter
-     * @param RoleDelForm $form
+     * @param RoleSearchForm $form
      * @param RoleRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException
@@ -131,7 +131,7 @@ class RoleController extends BaseController
     /**
      * 绑定路由
      * @param Filter $filter
-     * @param RoleSearchForm $form
+     * @param RoleBindingForm $form
      * @param RoleRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws \App\Exceptions\CodeException

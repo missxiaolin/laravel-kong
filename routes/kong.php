@@ -8,6 +8,7 @@
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
+
 // Kong测试api
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
 Route::any('/index/add', 'IndexController@add')->name('index.add');
@@ -34,7 +35,7 @@ Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     Route::post('/user/add', 'UserController@add')->name('user.add');
     Route::get('/user/info', 'UserController@info')->name('user.info');
     Route::get('/user/roles', 'UserController@roles')->name('user.roles');
-
+    Route::post('/user/update/roles', 'UserController@updateRoles')->name('user.update.roles');
 
 
     // Kong Service 模块

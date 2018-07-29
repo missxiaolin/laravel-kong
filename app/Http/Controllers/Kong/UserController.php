@@ -14,6 +14,7 @@ use App\Exceptions\CodeException;
 use App\Src\Basic\Filter;
 use App\Src\Form\User\LoginForm;
 use App\Src\Form\User\UserAddForm;
+use App\Src\Form\User\UserBindRolesForm;
 use App\Src\Form\User\UserDisableForm;
 use App\Src\Form\User\UserInfoForm;
 use App\Src\Form\User\UserListForm;
@@ -102,8 +103,9 @@ class UserController extends BaseController
     }
 
     /**
+     * 用户详情
      * @param Filter $filter
-     * @param UserDisableForm $form
+     * @param UserInfoForm $form
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
@@ -125,7 +127,7 @@ class UserController extends BaseController
     /**
      * 获取用户角色
      * @param Filter $filter
-     * @param UserInfoForm $form
+     * @param UserRolesForm $form
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
@@ -138,6 +140,25 @@ class UserController extends BaseController
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->getRoles($data);
+        return api_response($response);
+    }
+
+    /**
+     * 绑定角色
+     * @param Filter $filter
+     * @param UserBindRolesForm $form
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function updateRoles(Filter $filter, UserBindRolesForm $form, UsersRepository $repository)
+    {
+        $response = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $response = $repository->setRoles($data);
         return api_response($response);
     }
 }
