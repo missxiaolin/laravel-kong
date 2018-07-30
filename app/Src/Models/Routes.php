@@ -19,7 +19,7 @@ class Routes extends Model
      *
      * @var array
      */
-    protected $fillable = ['pid', 'name', 'route', 'type'];
+    protected $fillable = ['pid', 'level', 'name', 'code', 'route', 'res_uri', 'type', 'icon', 'is_hidden'];
 
     protected $table = 'router';
 

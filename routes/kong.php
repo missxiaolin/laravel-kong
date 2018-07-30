@@ -8,7 +8,6 @@
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
 
-
 // Kong测试api
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
 Route::any('/index/add', 'IndexController@add')->name('index.add');

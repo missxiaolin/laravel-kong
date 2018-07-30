@@ -8,6 +8,8 @@
 
 namespace App\Src\Repository;
 
+use App\Core\Enums\ErrorCode;
+use App\Exceptions\CodeException;
 use App\Src\Models\Routes;
 use App\Support\Sys;
 use Prettus\Repository\Eloquent\BaseRepository;
@@ -53,11 +55,30 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
      * 添加规则
      * @param $data
      * @return Routes
+     * @throws CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
      */
     public function save($data)
     {
         $id = array_get($data, 'id');
+        $code = array_get($data, 'code');
+        if ($id) {
+            $model = $this->model->where('code', $code)->where('id', '<>', $id)->first();
+        } else {
+            $model = $this->model->where('code', $code)->first();
+        }
+        // 判断code是否唯一
+        if ($model) {
+            throw new CodeException(ErrorCode::$ENUM_ROUTER_CODE_EXIST);
+        }
+
+        $pid = array_get($data, 'pid');
+        $level = array_get($data, 'level');
         $name = array_get($data, 'name');
+        $res_uri = array_get($data, 'res_uri');
+        $icon = array_get($data, 'icon');
+        $is_hidden = array_get($data, 'is_hidden');
         $route = array_get($data, 'route');
         $type = array_get($data, 'type');
         $model = $this->findByField('id', $id)->first();
@@ -67,6 +88,12 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         $model->name = $name;
         $model->route = $route;
         $model->type = $type;
+        $model->pid = $pid;
+        $model->level = $level;
+        $model->code = $code;
+        $model->res_uri = $res_uri;
+        $model->icon = $icon;
+        $model->is_hidden = $is_hidden;
         $model->save();
         return $model;
     }

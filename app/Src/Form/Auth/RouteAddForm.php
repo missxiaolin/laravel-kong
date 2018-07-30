@@ -16,7 +16,7 @@ class RouteAddForm extends Form
     {
         return [
             'name' => 'required',
-            'route' => 'required',
+            'code' => 'required',
         ];
     }
 
@@ -31,7 +31,7 @@ class RouteAddForm extends Form
     {
         return [
             'name' => '规则名称',
-            'route' => '规则',
+            'code' => '编码',
         ];
     }
 

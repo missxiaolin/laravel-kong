@@ -25,4 +25,9 @@ class Sys
     // 路由类型
     const ADMIN_ROUTER_SYSTEM_TYPE = 1; // 系统类型
     const ADMIN_ROUTER_NORMAL_TYPE = 0; // 自定义类型
+
+    // 路由规则
+    const ADMIN_ROUTE_MODULE_PID = 0;
+    const ADMIN_ROUTE_PAGES_PID = 1;
+    const ADMIN_ROUTE_BTN_PID = 2;
 }

@@ -89,4 +89,9 @@ class ErrorCode extends Enum
      * @Message('路由不存在')
      */
     public static $ENUM_ROUTER_NOT_EXIST = 2102;
+
+    /**
+     * @Message('路由编码已存在')
+     */
+    public static $ENUM_ROUTER_CODE_EXIST = 2103;
 }
