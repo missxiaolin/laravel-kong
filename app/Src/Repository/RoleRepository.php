@@ -38,7 +38,7 @@ class RoleRepository extends BaseRepository implements RepositoryInterface
         /** @var Role $role */
         foreach ($roles ?? [] as $role) {
             $redisKey = sprintf(Sys::REDIS_KEY_ROLE_ROUTER_CACHE_KEY, $role->id);
-            $routers = $role->routers->toArray();
+            $routers = $role->routers()->where('pid', '>', 0)->get()->toArray();
             $routes = array_column($routers, 'route');
             if ($routes) {
                 Redis::del($redisKey);
