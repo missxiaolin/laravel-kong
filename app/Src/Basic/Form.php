@@ -42,13 +42,13 @@ abstract class Form implements Arrayable
     }
 
     /**
-     * @param array $data
+     * @param $data
      * @return array
      * @throws CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
-    public function validate(array $data)
+    public function validate($data)
     {
         $this->_old_data = $this->data = $data;
         $this->init();

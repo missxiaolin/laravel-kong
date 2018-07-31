@@ -14,6 +14,7 @@ use App\Src\Form\Auth\RouteAddForm;
 use App\Src\Form\Auth\RouteDelForm;
 use App\Src\Form\Auth\RouteInfoForm;
 use App\Src\Form\Auth\RouteListForm;
+use App\Src\Form\Auth\RouteSearchForm;
 use App\Src\Repository\RoutesRepository;
 
 class RouteController extends BaseController
@@ -90,6 +91,25 @@ class RouteController extends BaseController
         $data = $filter->getData();
         $form->validate($data);
         $res = $repository->del($data);
+        return api_response($res);
+    }
+
+    /**
+     * 规则搜索
+     * @param Filter $filter
+     * @param RouteSearchForm $form
+     * @param RoutesRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \App\Exceptions\CodeException
+     * @throws \ReflectionException
+     * @throws \xiaolin\Enum\Exception\EnumException
+     */
+    public function search(Filter $filter, RouteSearchForm $form, RoutesRepository $repository)
+    {
+        $res = [];
+        $data = $filter->getData();
+        $form->validate($data);
+        $res = $repository->search($data);
         return api_response($res);
     }
 }

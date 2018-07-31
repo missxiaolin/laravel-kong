@@ -138,4 +138,28 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         }
         return true;
     }
+
+    /**
+     * @param $data
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function search($data)
+    {
+        $id = array_get($data, 'id');
+        $name = array_get($data, 'name');
+        $pid = array_get($data, 'pid');
+        $model = $this->model;
+        if ($name) {
+            $model = $model->where('name', $name);
+        }
+        if ($pid) {
+            $model = $model->where('pid', $pid);
+        }
+        if ($id) {
+            $model = $model->where('level', $id);
+        }
+        $model = $model->get();
+
+        return $model;
+    }
 }
