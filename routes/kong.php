@@ -7,7 +7,6 @@
  */
 // 用户登录
 Route::post('/user/login', 'UserController@login')->name('user.login');
-Route::any('/role/reload', 'RoleController@reload')->name('role.reload');
 
 // Kong测试api
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
@@ -22,7 +21,7 @@ Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
     Route::any('/route/delete', 'RouteController@delete')->name('route.delete');
 
     // 角色模块
-
+    Route::any('/role/reload', 'RoleController@reload')->name('role.reload');
     Route::any('/role/lists', 'RoleController@lists')->name('role.lists');
     Route::post('/role/add', 'RoleController@add')->name('role.add');
     Route::any('/role/info', 'RoleController@info')->name('role.info');
