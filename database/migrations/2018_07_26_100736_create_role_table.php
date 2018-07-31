@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesTable extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('router', function (Blueprint $table) {
+        Schema::create('role', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('pid');
-            $table->string('name',32);
-            $table->string('route',64);
-            $table->tinyInteger('type',4);
+            $table->string('role_name', 32);
+            $table->string('role_desc', 1000);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('router');
+        Schema::dropIfExists('role');
     }
 }
