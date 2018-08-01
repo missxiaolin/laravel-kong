@@ -42,11 +42,17 @@ class RbacMiddleware
             $pass = false;
             /** @var Role $role */
             foreach ($user->roles ?? [] as $role) {
-                $redisKey = sprintf(Sys::REDIS_KEY_ROLE_ROUTER_CACHE_KEY, $role->id);
-                if (Redis::sismember($redisKey, $uri)) {
+                $routers = $role->routers()->where('route', $uri)->get()->toArray();
+                if ($routers) {
                     $pass = true;
                     break;
                 }
+                // redis存储
+//                $redisKey = sprintf(Sys::REDIS_KEY_ROLE_ROUTER_CACHE_KEY, $role->id);
+//                if (Redis::sismember($redisKey, $uri)) {
+//                    $pass = true;
+//                    break;
+//                }
             }
             if ($pass === false) {
                 throw new CodeException(ErrorCode::$ENUM_ILLEGAL_REQUEST);
