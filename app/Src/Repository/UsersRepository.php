@@ -212,4 +212,68 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $res = $userRoleRepository->setData($data);
         return $res;
     }
+
+    /**
+     * @param $user
+     * @return array
+     */
+    public function getPower($user)
+    {
+        $res = [];
+        $response = app(RoutesRepository::class);
+        if ($user->type == Sys::ADMIN_USER_SUPER_TYPE) {
+            $res = $response->getUserPower();
+        }
+        if ($user->type != Sys::ADMIN_USER_SUPER_TYPE) {
+            $roles = $user->roles;
+            $parents = [];
+            $childrens = [];
+            foreach ($roles ?? [] as $role) {
+                // 父级
+                $routers = $role->routers()->where('pid', 0)->get()->toArray();
+                $parents = $this->dataFormat($parents, $routers);
+                // 子集
+                $routerChildrens = $role->routers()->where('pid', '>', 0)->get()->toArray();
+                $childrens = $this->dataFormat($childrens, $routerChildrens);
+            }
+            $res = $this->duplicate($parents, $childrens);
+        }
+        return $res;
+    }
+
+    /**
+     * 格式化
+     * @param $data
+     * @param $routes
+     * @return mixed
+     */
+    public function dataFormat($data, $routes)
+    {
+        if (!$routes) {
+            return $data;
+        }
+        array_map(function ($v) use (&$data) {
+            $data[$v['id']] = $v;
+        }, $routes);
+        return $data;
+    }
+
+    /**
+     * @param $parents
+     * @param $childrens
+     * @return array
+     */
+    public function duplicate($parents, $childrens)
+    {
+        foreach ($parents ?? [] as $k => $v) {
+            $item = [];
+            foreach ($childrens as $children) {
+                if ($v['id'] == $children['level']) {
+                    $item[] = $children;
+                    $parents[$k]['children'] = $item;
+                }
+            }
+        }
+        return $parents;
+    }
 }

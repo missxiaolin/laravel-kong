@@ -6,13 +6,17 @@
  * Time: 下午3:43
  */
 // 用户登录
-Route::post('/user/login', 'UserController@login')->name('user.login');
+Route::any('/user/login', 'UserController@login')->name('user.login');
 
 // Kong测试api
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');
 Route::any('/index/add', 'IndexController@add')->name('index.add');
 
-Route::group(['middleware' => ['auth.kong','rbac.kong']], function () {
+Route::group(['middleware' => ['auth.kong']], function () {
+    Route::any('/user/power', 'UserController@power')->name('user.power');
+});
+
+Route::group(['middleware' => ['auth.kong', 'rbac.kong']], function () {
     // 权限模块
     Route::any('/route/lists', 'RouteController@lists')->name('route.lists');
     Route::post('/route/save', 'RouteController@save')->name('route.save');

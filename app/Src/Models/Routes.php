@@ -30,4 +30,12 @@ class Routes extends Model
      */
     protected $hidden = [
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function route()
+    {
+        return $this->belongsTo(Routes::class, 'id', 'level');
+    }
 }

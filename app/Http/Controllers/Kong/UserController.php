@@ -161,4 +161,15 @@ class UserController extends BaseController
         $response = $repository->setRoles($data);
         return api_response($response);
     }
+
+    /**
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function power(UsersRepository $repository)
+    {
+        $user = app('kong.user');
+        $res = $repository->getPower($user);
+        return api_response($res);
+    }
 }

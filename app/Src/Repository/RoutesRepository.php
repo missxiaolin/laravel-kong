@@ -79,6 +79,7 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         $res_uri = array_get($data, 'res_uri');
         $icon = array_get($data, 'icon');
         $is_hidden = array_get($data, 'is_hidden');
+        $noDropdown = array_get($data, 'noDropdown');
         $route = array_get($data, 'route');
         $type = array_get($data, 'type');
         $model = $this->findByField('id', $id)->first();
@@ -94,6 +95,7 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         $model->res_uri = $res_uri;
         $model->icon = $icon;
         $model->is_hidden = $is_hidden;
+        $model->noDropdown = $noDropdown;
         $model->save();
         return $model;
     }
@@ -161,5 +163,19 @@ class RoutesRepository extends BaseRepository implements RepositoryInterface
         $model = $model->get();
 
         return $model;
+    }
+
+    /**
+     * 获取权限路由
+     * @return mixed
+     */
+    public function getUserPower()
+    {
+        $model = $this->model;
+        $routes = $model->where('pid', 0)->get();
+        foreach ($routes ?? [] as $route) {
+            $route->children = $route->route()->get();
+        }
+        return $routes;
     }
 }
