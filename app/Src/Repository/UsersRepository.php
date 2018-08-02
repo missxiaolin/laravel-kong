@@ -222,23 +222,69 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
         $res = [];
         $response = app(RoutesRepository::class);
         if ($user->type == Sys::ADMIN_USER_SUPER_TYPE) {
-            $res = $response->getUserPower();
+            return $response->getUserPower();
         }
-        if ($user->type != Sys::ADMIN_USER_SUPER_TYPE) {
-            $roles = $user->roles;
-            $parents = [];
-            $childrens = [];
-            foreach ($roles ?? [] as $role) {
-                // 父级
-                $routers = $role->routers()->where('pid', 0)->get()->toArray();
-                $parents = $this->dataFormat($parents, $routers);
-                // 子集
-                $routerChildrens = $role->routers()->where('pid', '>', 0)->get()->toArray();
-                $childrens = $this->dataFormat($childrens, $routerChildrens);
-            }
-            $res = $this->duplicate($parents, $childrens);
+        $roles = $user->roles;
+        $parents = [];
+        $childrens = [];
+        foreach ($roles ?? [] as $role) {
+            // 父级
+            $routers = $role->routers()->where('pid', 0)->get()->toArray();
+            $parents = $this->dataFormat($parents, $routers);
+            // 子集
+            $routerChildrens = $role->routers()->where('pid', '>', 0)->get()->toArray();
+            $childrens = $this->dataFormat($childrens, $routerChildrens);
         }
+        $res = $this->duplicate($parents, $childrens);
+
         return $res;
+    }
+
+    /**
+     * 获取按钮权限
+     * @param $user
+     * @param $data
+     * @return array|mixed
+     */
+    public function getBtnPower($user, $data)
+    {
+        if (!$data) {
+            return [];
+        }
+        if ($user->type == Sys::ADMIN_USER_SUPER_TYPE) {
+            return $this->btnFormat($data);
+        }
+        $keys = array_keys($data);
+        $routes = [];
+        $roles = $user->roles;
+        foreach ($roles ?? [] as $role) {
+            $userRoutes = $role->routers()->whereIn('code', $keys)->get()->toArray();
+            if (!$userRoutes) {
+                continue;
+            }
+            array_map(function ($v) use (&$routes) {
+                $routes[$v['id']] = $v['code'];
+            }, $userRoutes);
+        }
+        foreach ($data as $k => $v) {
+            if (in_array($k, $routes)) {
+                $data[$k] = 1;
+            }
+        }
+        return $data;
+    }
+
+
+    /**
+     * @param $data
+     * @return mixed
+     */
+    public function btnFormat($data)
+    {
+        foreach ($data as $k => $v) {
+            $data[$k] = 1;
+        }
+        return $data;
     }
 
     /**
@@ -259,6 +305,7 @@ class UsersRepository extends BaseRepository implements RepositoryInterface
     }
 
     /**
+     * 格式化
      * @param $parents
      * @param $childrens
      * @return array

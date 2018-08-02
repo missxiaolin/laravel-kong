@@ -57,7 +57,6 @@ class UserController extends BaseController
      */
     public function add(Filter $filter, UserAddForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->setUser($data);
@@ -76,7 +75,6 @@ class UserController extends BaseController
      */
     public function lists(Filter $filter, UserListForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->getLists($data);
@@ -95,7 +93,6 @@ class UserController extends BaseController
      */
     public function status(Filter $filter, UserDisableForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->disable($data);
@@ -114,7 +111,6 @@ class UserController extends BaseController
      */
     public function info(Filter $filter, UserInfoForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $model = $repository->getInfoId($data);
@@ -136,7 +132,6 @@ class UserController extends BaseController
      */
     public function roles(Filter $filter, UserRolesForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->getRoles($data);
@@ -155,7 +150,6 @@ class UserController extends BaseController
      */
     public function updateRoles(Filter $filter, UserBindRolesForm $form, UsersRepository $repository)
     {
-        $response = [];
         $data = $filter->getData();
         $form->validate($data);
         $response = $repository->setRoles($data);
@@ -163,6 +157,7 @@ class UserController extends BaseController
     }
 
     /**
+     * 权限列表
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      */
@@ -170,6 +165,20 @@ class UserController extends BaseController
     {
         $user = app('kong.user');
         $res = $repository->getPower($user);
+        return api_response($res);
+    }
+
+    /**
+     * 按钮权限
+     * @param Filter $filter
+     * @param UsersRepository $repository
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function btnPower(Filter $filter, UsersRepository $repository)
+    {
+        $data = $filter->getData();
+        $user = app('kong.user');
+        $res = $repository->getBtnPower($user, $data);
         return api_response($res);
     }
 }
