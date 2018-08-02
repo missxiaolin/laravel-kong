@@ -15,6 +15,7 @@ class Sys
     const USER_NORMAL = 1; //正常
 
     const ADMIN_USER_SUPER_TYPE = 1; // 超级管理员
+    const ADMIN_USER_PLAIN_TYPE = 0; // 普通会员
 
     // 角色路由缓存
     const REDIS_KEY_ROLE_ROUTER_CACHE_KEY = 'cache:role:%s:routers';
