@@ -22,8 +22,8 @@ class CreateRouterTable extends Migration
             $table->string('route', 300);
             $table->string('res_uri', 300);
             $table->string('icon', 32);
-            $table->string('is_hidden', 32)->default(false);
-            $table->string('noDropdown', 32)->default(false);
+            $table->bigInteger('is_hidden',2)->default(0);
+            $table->bigInteger('noDropdown', 2)->default(0);
             $table->string('route', 64);
             $table->tinyInteger('type', 4);
             $table->timestamps();
