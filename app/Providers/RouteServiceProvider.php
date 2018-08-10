@@ -79,7 +79,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('kong')
             ->namespace($this->kongNamespace)
-            ->domain(config('domain.kong'))
+//            ->domain(config('domain.kong'))
             ->prefix('kong')
             ->group(base_path('routes/kong.php'));
     }
