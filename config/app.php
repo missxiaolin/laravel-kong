@@ -183,6 +183,9 @@ return [
         // sql
         App\Providers\SqlQueryServiceProvider::class,
 
+        // swoole
+        SwooleTW\Http\LaravelServiceProvider::class,
+
     ],
 
     /*
