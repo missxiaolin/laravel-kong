@@ -21,3 +21,18 @@
 
 测试账号：13758735533    123456
 
+### 数据库
+
+~~~
+database/sql/kong.sql
+或
+php artisan migrate 
+~~~
+
+### laravel-swoole 分之
+
+需要安装swoole扩展，以swoole-http-server 为基础
+
+~~~
+php artisan swoole:http start
+~~~
