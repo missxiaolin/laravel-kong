@@ -87,7 +87,24 @@ if (!function_exists('api_response')) {
 注册中间件app/Http/Middleware/ApiResponseMiddleware.php
 
 ~~~
-/** @var Response $response */
+<?php
+namespace App\Http\Middleware;
+
+use Closure;
+use  Illuminate\Http\Response;
+
+class ApiResponseMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        /** @var Response $response */
         $response = $next($request);
 
         // Perform action
@@ -96,6 +113,9 @@ if (!function_exists('api_response')) {
         $response->header('Access-Control-Allow-Methods', 'POST,PUT,GET,UPDATE,OPTIONS');
 
         return $response;
+
+    }
+}
 ~~~
 
 - 方案4
