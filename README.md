@@ -16,7 +16,7 @@
 
 [Kong 官网](https://konghq.com/install/)
 
-- [前端vue-kong](https://github.com/missxiaolin/vue-kong)
+- 前端项目地址：[vue-kong](https://github.com/missxiaolin/vue-kong)
 - [效果展示](http://admin.missxiaolin.com/)
 
 测试账号：13758735533    123456
