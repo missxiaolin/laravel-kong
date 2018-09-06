@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // 日志
-        App\Providers\LoggerProvider::class,
+//        App\Providers\LoggerProvider::class,
 
         // sql
         App\Providers\SqlQueryServiceProvider::class,
