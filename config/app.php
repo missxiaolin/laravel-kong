@@ -183,6 +183,9 @@ return [
         // sql
         App\Providers\SqlQueryServiceProvider::class,
 
+        // 封装日志
+        Lin\Src\Providers\LoggerProvider::class
+
     ],
 
     /*

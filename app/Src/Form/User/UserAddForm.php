@@ -9,7 +9,7 @@
 namespace App\Src\Form\User;
 
 
-use App\Src\Basic\Form;
+use Lin\Src\Basic\Form;
 
 class UserAddForm extends Form
 {
