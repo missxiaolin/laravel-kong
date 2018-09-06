@@ -6,7 +6,7 @@
  * Time: 下午3:43
  */
 // 用户登录
-Route::any('/user/login', 'UserController@login')->name('user.login');
+Route::post('/user/login', 'UserController@login')->name('user.login');
 
 // Kong测试api
 Route::any('/index/kong', 'IndexController@kong')->name('index.kong');

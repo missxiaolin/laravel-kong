@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Lin\Src\Exceptions\CodeException as FormException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -57,6 +58,10 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof FormException) {
             return response_error($exception->getMessage(), $exception->getErrorCode());
+        }
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return response_error($exception->getMessage(), 500);
         }
 
         return parent::render($request, $exception);

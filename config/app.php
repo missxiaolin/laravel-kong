@@ -181,10 +181,13 @@ return [
 //        App\Providers\LoggerProvider::class,
 
         // sql
-        App\Providers\SqlQueryServiceProvider::class,
+//        App\Providers\SqlQueryServiceProvider::class,
 
         // 封装日志
-        Lin\Src\Providers\LoggerProvider::class
+        Lin\Src\Providers\LoggerProvider::class,
+
+        // 封装sql日志
+        Lin\Src\Providers\SqlQueryServiceProvider::class
 
     ],
 
