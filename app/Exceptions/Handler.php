@@ -60,9 +60,9 @@ class Handler extends ExceptionHandler
             return response_error($exception->getMessage(), $exception->getErrorCode());
         }
 
-        if ($exception instanceof MethodNotAllowedHttpException) {
-            return response_error($exception->getMessage(), 500);
-        }
+//        if ($exception instanceof MethodNotAllowedHttpException) {
+//            return response_error($exception->getMessage(), 500);
+//        }
 
         return parent::render($request, $exception);
     }

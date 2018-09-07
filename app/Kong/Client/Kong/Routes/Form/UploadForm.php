@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Routes\Form;
 
-use App\Src\Basic\Form;
+use Lin\Src\Basic\Form;
 
 class UploadForm extends Form
 {

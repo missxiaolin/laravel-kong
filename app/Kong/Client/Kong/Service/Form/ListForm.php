@@ -8,8 +8,7 @@
 
 namespace App\Kong\Client\Kong\Service\Form;
 
-
-use App\Src\Basic\Form;
+use Lin\Src\Basic\Form;
 
 class ListForm extends Form
 {
