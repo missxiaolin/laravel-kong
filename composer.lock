@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb17fe4ae09db46cfcda7965c67dfff7",
+    "content-hash": "ef966f7c63e91e9c7c55186454090c95",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2995,11 +2995,11 @@
         },
         {
             "name": "xiaolin/laravel-gateway",
-            "version": "0.0.8",
+            "version": "0.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/missxiaolin/laravel-gateway",
-                "reference": "10407c2c2ba88aa3dd71cae8e88bbe900f275058"
+                "reference": "4025118e0f67c5b5bf678ae320238a103310a339"
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.3",
@@ -3034,7 +3034,7 @@
                 }
             ],
             "description": "config",
-            "time": "2018-09-06T13:15:04+00:00"
+            "time": "2018-09-07T02:11:16+00:00"
         }
     ],
     "packages-dev": [
