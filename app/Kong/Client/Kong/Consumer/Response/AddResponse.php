@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Consumer\Response;
 
-use App\Kong\Basic\Response;
+use Lin\Src\Basic\Response;
 
 class AddResponse extends Response
 {
