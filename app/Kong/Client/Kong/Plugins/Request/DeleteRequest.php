@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Plugins\Request;
 
-use App\Kong\Basic\Request;
+use Lin\Src\Basic\Request;
 
 class DeleteRequest extends Request
 {

@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Routes\Request;
 
-use App\Kong\Basic\Request;
+use Lin\Src\Basic\Request;
 
 class InfoRequest extends Request
 {
