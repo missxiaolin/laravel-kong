@@ -8,7 +8,7 @@
 
 namespace App\Kong\Manager;
 
-use App\Kong\Basic\Manager;
+use Lin\Src\Basic\Manager;
 
 class Kong extends Manager
 {
