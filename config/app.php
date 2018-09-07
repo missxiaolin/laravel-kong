@@ -178,10 +178,16 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // 日志
-        App\Providers\LoggerProvider::class,
+//        App\Providers\LoggerProvider::class,
 
         // sql
-        App\Providers\SqlQueryServiceProvider::class,
+//        App\Providers\SqlQueryServiceProvider::class,
+
+        // 封装日志
+        Lin\Src\Providers\LoggerProvider::class,
+
+        // 封装sql日志
+        Lin\Src\Providers\SqlQueryServiceProvider::class
 
         // swoole
         SwooleTW\Http\LaravelServiceProvider::class,

@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Consumer\Response;
 
-use App\Kong\Basic\Response;
+use Lin\Src\Basic\Response;
 use Carbon\Carbon;
 
 class ListsResponse extends Response

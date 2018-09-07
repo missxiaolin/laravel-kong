@@ -15,8 +15,14 @@
         "predis/predis": "^1.1",
         "prettus/l5-repository": "^2.6",
         "swooletw/laravel-swoole": "^2.4",
-        "xiaolin/laravel-gateway": "^0.0.4"
+        "xiaolin/laravel-gateway": "^0.0.9"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/missxiaolin/laravel-gateway"
+        }
+    ],
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",

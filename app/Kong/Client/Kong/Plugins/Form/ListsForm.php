@@ -9,7 +9,7 @@
 namespace App\Kong\Client\Kong\Plugins\Form;
 
 
-use App\Src\Basic\Form;
+use Lin\Src\Basic\Form;
 
 class ListsForm extends Form
 {

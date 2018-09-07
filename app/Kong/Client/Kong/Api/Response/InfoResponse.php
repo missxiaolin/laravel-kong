@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Api\Response;
 
-use App\Kong\Basic\Response;
+use Lin\Src\Basic\Response;
 
 class InfoResponse extends Response
 {

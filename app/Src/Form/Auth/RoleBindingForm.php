@@ -8,7 +8,7 @@
 
 namespace App\Src\Form\Auth;
 
-use App\Src\Basic\Form;
+use Lin\Src\Basic\Form;
 
 class RoleBindingForm extends Form
 {

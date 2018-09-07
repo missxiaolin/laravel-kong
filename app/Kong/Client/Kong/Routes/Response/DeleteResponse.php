@@ -8,7 +8,7 @@
 
 namespace App\Kong\Client\Kong\Routes\Response;
 
-use App\Kong\Basic\Response;
+use Lin\Src\Basic\Response;
 
 class DeleteResponse extends Response
 {
