@@ -28,8 +28,9 @@ class UserController extends BaseController
      * @param Filter $filter
      * @param LoginForm $form
      * @param UsersRepository $repository
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -52,6 +53,7 @@ class UserController extends BaseController
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -69,7 +71,7 @@ class UserController extends BaseController
      * @param UserListForm $form
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
-     * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -88,6 +90,7 @@ class UserController extends BaseController
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -106,6 +109,7 @@ class UserController extends BaseController
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -127,6 +131,7 @@ class UserController extends BaseController
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
@@ -145,6 +150,7 @@ class UserController extends BaseController
      * @param UsersRepository $repository
      * @return \Illuminate\Http\JsonResponse
      * @throws CodeException
+     * @throws \Lin\Src\Exceptions\CodeException
      * @throws \ReflectionException
      * @throws \xiaolin\Enum\Exception\EnumException
      */
